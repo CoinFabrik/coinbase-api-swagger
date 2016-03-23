@@ -171,6 +171,253 @@
                     }
                 }
             }
+        },
+        "/accounts": {
+            "get": {
+                "summary": "List accounts",
+                "description": "Lists current user’s accounts to which the authentication method has access to.",
+                "security": [
+                    {
+                        "coinbaseAccessCode": [
+                            "wallet:accounts:read"
+                        ]
+                    }
+                ],
+                "tags": [
+                    "Accounts"
+                ],
+                "responses": {
+                    "200": {
+                        "description": "The accounts",
+                        "schema": {
+                            "type": "object",
+                            "properties": {
+                                "pagination": {
+                                    "$ref": "#/definitions/Pagination"
+                                },
+                                "data": {
+                                    "type": "array",
+                                    "items": {
+                                        "$ref": "#/definitions/Account"
+                                    }
+                                }
+                            }
+                        }
+                    }
+                }
+            },
+            "post": {
+                "summary": "Create account",
+                "description": "Creates a new account for user.",
+                "security": [
+                    {
+                        "coinbaseAccessCode": [
+                            "wallet:accounts:create"
+                        ]
+                    }
+                ],
+                "tags": [
+                    "Accounts"
+                ],
+                "responses": {
+                    "201": {
+                        "description": "The created account",
+                        "schema": {
+                            "type": "object",
+                            "properties": {
+                                "data": {
+                                    "$ref": "#/definitions/Account"
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        },
+        "/accounts/{account_id}": {
+            "get": {
+                "summary": "Show an account",
+                "description": "Show current user’s account. To access user’s primary account, primary keyword can be used instead of the account id in the URL.",
+                "security": [
+                    {
+                        "coinbaseAccessCode": [
+                            "wallet:accounts:read"
+                        ]
+                    }
+                ],
+                "tags": [
+                    "Accounts"
+                ],
+                "responses": {
+                    "200": {
+                        "description": "The account",
+                        "schema": {
+                            "type": "object",
+                            "properties": {
+                                "data": {
+                                    "$ref": "#/definitions/Account"
+                                }
+                            }
+                        }
+                    }
+                }
+            },
+            "put": {
+                "summary": "Update account",
+                "description": "Modifies user’s account name.",
+                "security": [
+                    {
+                        "coinbaseAccessCode": [
+                            "wallet:accounts:update"
+                        ]
+                    }
+                ],
+                "tags": [
+                    "Accounts"
+                ],
+                "parameters": [
+                    {
+                        "in": "body",
+                        "name": "account_properties",
+                        "description": "Properties to update",
+                        "required": false,
+                        "schema": {
+                            "type": "object",
+                            "properties": {
+                                "name": {
+                                    "type": "string",
+                                    "description": "New account name"
+                                }
+                            }
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "The account",
+                        "schema": {
+                            "type": "object",
+                            "properties": {
+                                "data": {
+                                    "$ref": "#/definitions/Account"
+                                }
+                            }
+                        }
+                    }
+                }
+            },
+            "delete": {
+                "summary": "Delete account",
+                "description": "Removes user’s account. In order to remove an account it can’t be\n\n- Primary account\n- Account with non-zero balance\n- Fiat account\n- Vault with a pending withdrawal\n",
+                "security": [
+                    {
+                        "coinbaseAccessCode": [
+                            "wallet:accounts:delete"
+                        ]
+                    }
+                ],
+                "tags": [
+                    "Accounts"
+                ],
+                "responses": {
+                    "204": {
+                        "description": "No content"
+                    }
+                }
+            }
+        },
+        "/accounts/{account_id}/primary": {
+            "get": {
+                "summary": "Set account as primary",
+                "description": "Promote an account as primary account.",
+                "security": [
+                    {
+                        "coinbaseAccessCode": [
+                            "wallet:accounts:update"
+                        ]
+                    }
+                ],
+                "tags": [
+                    "Accounts"
+                ],
+                "responses": {
+                    "200": {
+                        "description": "The account in question",
+                        "schema": {
+                            "type": "object",
+                            "properties": {
+                                "data": {
+                                    "$ref": "#/definitions/Account"
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        },
+        "/accounts/{account_id}/addresses": {
+            "get": {
+                "summary": "List addresses",
+                "description": "Lists addresses for an account.\n\n*Important*: Addresses should be considered one time use only.\n",
+                "security": [
+                    {
+                        "coinbaseAccessCode": [
+                            "wallet:addresses:read"
+                        ]
+                    }
+                ],
+                "tags": [
+                    "Accounts"
+                ],
+                "responses": {
+                    "200": {
+                        "description": "The accounts",
+                        "schema": {
+                            "type": "object",
+                            "properties": {
+                                "pagination": {
+                                    "$ref": "#/definitions/Pagination"
+                                },
+                                "data": {
+                                    "type": "array",
+                                    "items": {
+                                        "$ref": "#/definitions/Address"
+                                    }
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        },
+        "/accounts/{account_id}/addresses/{address_id}": {
+            "get": {
+                "summary": "Show an address",
+                "description": "Show an individual address for an account.\nRegular bitcoin address can be used in place of address_id but the address has to be associated to the correct account.\n  \n*Important* Addresses should be considered one time use only. \n",
+                "security": [
+                    {
+                        "coinbaseAccessCode": [
+                            "wallet:addresses:read"
+                        ]
+                    }
+                ],
+                "tags": [
+                    "Accounts"
+                ],
+                "responses": {
+                    "200": {
+                        "description": "The address",
+                        "schema": {
+                            "type": "object",
+                            "properties": {
+                                "data": {
+                                    "$ref": "#/definitions/Address"
+                                }
+                            }
+                        }
+                    }
+                }
+            }
         }
     },
     "securityDefinitions": {
@@ -246,6 +493,120 @@
                 },
                 "resource": {
                     "type": "string"
+                },
+                "resource_path": {
+                    "type": "string"
+                }
+            }
+        },
+        "Pagination": {
+            "type": "object",
+            "properties": {
+                "ending_before": {
+                    "type": "int"
+                },
+                "starting_after": {
+                    "type": "int"
+                },
+                "limit": {
+                    "type": "int"
+                },
+                "order": {
+                    "type": "string"
+                },
+                "previous_uri": {
+                    "type": "string"
+                },
+                "next_uri": {
+                    "type": "string"
+                }
+            }
+        },
+        "MoneyHash": {
+            "type": "object",
+            "properties": {
+                "amount": {
+                    "type": "string"
+                },
+                "currency": {
+                    "type": "string"
+                }
+            }
+        },
+        "Account": {
+            "type": "object",
+            "properties": {
+                "id": {
+                    "type": "string",
+                    "description": "Resource ID"
+                },
+                "name": {
+                    "type": "string",
+                    "description": "User or system defined name"
+                },
+                "primary": {
+                    "type": "boolean",
+                    "description": "Indicates if this is a primary account"
+                },
+                "type": {
+                    "type": "string",
+                    "description": "Account’s type. Available values: wallet, fiat, multisig, vault, multisig_vault"
+                },
+                "currency": {
+                    "type": "string",
+                    "description": "Account's currency"
+                },
+                "balance": {
+                    "$ref": "#/definitions/MoneyHash",
+                    "description": "Balance in BTC"
+                },
+                "native_balance": {
+                    "$ref": "#/definitions/MoneyHash",
+                    "description": "Balance in user’s native currency"
+                },
+                "created_at": {
+                    "type": "dateTime",
+                    "description": "Timestamp indicating when was the account created."
+                },
+                "updated_at": {
+                    "type": "dateTime",
+                    "description": "Timestamp indicating when was the account last updated."
+                },
+                "resource": {
+                    "type": "string",
+                    "description": "This value is always 'account'."
+                },
+                "resource_path": {
+                    "type": "string"
+                }
+            }
+        },
+        "Address": {
+            "type": "object",
+            "properties": {
+                "id": {
+                    "type": "string",
+                    "description": "Resource ID"
+                },
+                "address": {
+                    "type": "string",
+                    "description": "Bitcoin address"
+                },
+                "name": {
+                    "type": "string",
+                    "description": "User defined label for the address"
+                },
+                "created_at": {
+                    "type": "dateTime",
+                    "description": "Timestamp indicating when was the address was created."
+                },
+                "updated_at": {
+                    "type": "dateTime",
+                    "description": "Timestamp indicating when was the address last updated."
+                },
+                "resource": {
+                    "type": "string",
+                    "description": "This value is always 'address'."
                 },
                 "resource_path": {
                     "type": "string"
