@@ -15,9 +15,7 @@
     ],
     "security": [
         {
-            "coinbaseAccessCode": [
-                "user"
-            ]
+            "coinbaseAccessCode": []
         }
     ],
     "paths": {
@@ -49,16 +47,9 @@
                             "type": "object",
                             "properties": {
                                 "data": {
-                                    "type": "object",
                                     "$ref": "#/definitions/User"
                                 }
                             }
-                        }
-                    },
-                    "default": {
-                        "description": "Unexpected error",
-                        "schema": {
-                            "$ref": "#/definitions/Error"
                         }
                     }
                 }
@@ -83,16 +74,9 @@
                             "type": "object",
                             "properties": {
                                 "data": {
-                                    "type": "object",
                                     "$ref": "#/definitions/User"
                                 }
                             }
-                        }
-                    },
-                    "default": {
-                        "description": "Unexpected error",
-                        "schema": {
-                            "$ref": "#/definitions/Error"
                         }
                     }
                 }
@@ -139,16 +123,9 @@
                             "type": "object",
                             "properties": {
                                 "data": {
-                                    "type": "object",
                                     "$ref": "#/definitions/User"
                                 }
                             }
-                        }
-                    },
-                    "default": {
-                        "description": "Unexpected error",
-                        "schema": {
-                            "$ref": "#/definitions/Error"
                         }
                     }
                 }
@@ -190,12 +167,6 @@
                                     }
                                 }
                             }
-                        }
-                    },
-                    "default": {
-                        "description": "Unexpected error",
-                        "schema": {
-                            "$ref": "#/definitions/Error"
                         }
                     }
                 }
@@ -277,21 +248,6 @@
                     "type": "string"
                 },
                 "resource_path": {
-                    "type": "string"
-                }
-            }
-        },
-        "Error": {
-            "type": "object",
-            "properties": {
-                "code": {
-                    "type": "integer",
-                    "format": "int32"
-                },
-                "message": {
-                    "type": "string"
-                },
-                "fields": {
                     "type": "string"
                 }
             }
