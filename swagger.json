@@ -1,0 +1,300 @@
+{
+    "swagger": "2.0",
+    "info": {
+        "title": "Coinbase API",
+        "description": "The Coinbase v2 API",
+        "version": "2.0.0"
+    },
+    "host": "api.sandbox.coinbase.com",
+    "schemes": [
+        "https"
+    ],
+    "basePath": "/v2",
+    "produces": [
+        "application/json"
+    ],
+    "security": [
+        {
+            "coinbaseAccessCode": [
+                "user"
+            ]
+        }
+    ],
+    "paths": {
+        "/users/{user_id}": {
+            "get": {
+                "summary": "Show a user",
+                "description": "Get any user’s public information with their ID.",
+                "parameters": [
+                    {
+                        "name": "user_id",
+                        "in": "path",
+                        "description": "The user id",
+                        "required": true,
+                        "type": "string"
+                    }
+                ],
+                "security": [
+                    {
+                        "coinbaseAccessCode": []
+                    }
+                ],
+                "tags": [
+                    "Users"
+                ],
+                "responses": {
+                    "200": {
+                        "description": "The requested user",
+                        "schema": {
+                            "type": "object",
+                            "properties": {
+                                "data": {
+                                    "type": "object",
+                                    "$ref": "#/definitions/User"
+                                }
+                            }
+                        }
+                    },
+                    "default": {
+                        "description": "Unexpected error",
+                        "schema": {
+                            "$ref": "#/definitions/Error"
+                        }
+                    }
+                }
+            }
+        },
+        "/user": {
+            "get": {
+                "summary": "Show current user",
+                "description": "Get current user’s public information. To get user’s email or private information, use permissions wallet:user:email and wallet:user:read.",
+                "security": [
+                    {
+                        "coinbaseAccessCode": []
+                    }
+                ],
+                "tags": [
+                    "Users"
+                ],
+                "responses": {
+                    "200": {
+                        "description": "The requested user",
+                        "schema": {
+                            "type": "object",
+                            "properties": {
+                                "data": {
+                                    "type": "object",
+                                    "$ref": "#/definitions/User"
+                                }
+                            }
+                        }
+                    },
+                    "default": {
+                        "description": "Unexpected error",
+                        "schema": {
+                            "$ref": "#/definitions/Error"
+                        }
+                    }
+                }
+            },
+            "put": {
+                "summary": "Update current user",
+                "description": "Modify current user and their preferences.",
+                "security": [
+                    {
+                        "coinbaseAccessCode": [
+                            "wallet:user:update"
+                        ]
+                    }
+                ],
+                "tags": [
+                    "Users"
+                ],
+                "parameters": [
+                    {
+                        "in": "body",
+                        "name": "body",
+                        "description": "Properties to update",
+                        "required": false,
+                        "schema": {
+                            "type": "object",
+                            "properties": {
+                                "name": {
+                                    "type": "string"
+                                },
+                                "time_zone": {
+                                    "type": "string"
+                                },
+                                "native_currency": {
+                                    "type": "string"
+                                }
+                            }
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "The updated user",
+                        "schema": {
+                            "type": "object",
+                            "properties": {
+                                "data": {
+                                    "type": "object",
+                                    "$ref": "#/definitions/User"
+                                }
+                            }
+                        }
+                    },
+                    "default": {
+                        "description": "Unexpected error",
+                        "schema": {
+                            "$ref": "#/definitions/Error"
+                        }
+                    }
+                }
+            }
+        },
+        "/user/auth": {
+            "get": {
+                "summary": "Show authorization information",
+                "description": "Get current user’s authorization information including granted scopes and send limits when using OAuth2 authentication.",
+                "security": [
+                    {
+                        "coinbaseAccessCode": []
+                    }
+                ],
+                "tags": [
+                    "Users"
+                ],
+                "responses": {
+                    "200": {
+                        "description": "The requested user",
+                        "schema": {
+                            "type": "object",
+                            "properties": {
+                                "data": {
+                                    "type": "object",
+                                    "properties": {
+                                        "method": {
+                                            "type": "string"
+                                        },
+                                        "scopes": {
+                                            "type": "array",
+                                            "items": {
+                                                "type": "string"
+                                            }
+                                        },
+                                        "oauth_meta": {
+                                            "type": "object"
+                                        }
+                                    }
+                                }
+                            }
+                        }
+                    },
+                    "default": {
+                        "description": "Unexpected error",
+                        "schema": {
+                            "$ref": "#/definitions/Error"
+                        }
+                    }
+                }
+            }
+        }
+    },
+    "securityDefinitions": {
+        "coinbaseAccessCode": {
+            "type": "oauth2",
+            "scopes": {
+                "wallet:accounts:read": "List user’s accounts and their balances",
+                "wallet:accounts:update": "Update account (e.g. change name)",
+                "wallet:accounts:create": "Create a new account (e.g. BTC wallet)",
+                "wallet:accounts:delete": "Delete existing account",
+                "wallet:addresses:read": "List account’s bitcoin addresses",
+                "wallet:addresses:create": "Create new bitcoin addresses for wallets",
+                "wallet:buys:read": "List account’s buys",
+                "wallet:buys:create": "Buy bitcoin",
+                "wallet:checkouts:read": "List user’s merchant checkouts",
+                "wallet:checkouts:create": "Create a new merchant checkout",
+                "wallet:deposits:read": "List account’s deposits",
+                "wallet:deposits:create": "Create a new deposit",
+                "wallet:notifications:read": "List user’s notifications",
+                "wallet:orders:read": "List user’s merchant order",
+                "wallet:orders:create": "Create a new merchant order",
+                "wallet:orders:refund": "Refund a merchant order",
+                "wallet:payment-methods:read": "List user’s payment methods (e.g. bank accounts)",
+                "wallet:payment-methods:delete": "Remove existing payment methods",
+                "wallet:payment-methods:limits": "Get detailed limits for payment methods (useful for performing buys and sells). This permission is to be used together with wallet:payment-methods:read",
+                "wallet:sells:read": "List account’s sells",
+                "wallet:sells:create": "Sell bitcoin",
+                "wallet:transactions:read": "List account’s transactions",
+                "wallet:transactions:send": "Send bitcoin",
+                "wallet:transactions:request": "Request bitcoin from a Coinbase user",
+                "wallet:transactions:transfer": "Transfer funds between user’s two bitcoin accounts",
+                "wallet:user:read": "List detailed user information (public information is available without this permission)",
+                "wallet:user:update": "Update current user",
+                "wallet:user:email": "Read current user’s email address",
+                "wallet:withdrawals:read": "List account’s withdrawals",
+                "wallet:withdrawals:create": "Create a new withdrawal"
+            },
+            "flow": "accessCode",
+            "authorizationUrl": "https://www.coinbase.com/oauth/authorize",
+            "tokenUrl": "http://www.coinbase.com/oauth/token"
+        }
+    },
+    "definitions": {
+        "User": {
+            "type": "object",
+            "properties": {
+                "id": {
+                    "type": "string",
+                    "description": "Resource ID"
+                },
+                "name": {
+                    "type": "string",
+                    "description": "User’s public name"
+                },
+                "username": {
+                    "type": "string"
+                },
+                "profile_location": {
+                    "type": "string",
+                    "description": "Location for user’s public profile"
+                },
+                "profile_bio": {
+                    "type": "string",
+                    "description": "Bio for user’s public profile"
+                },
+                "profile_url": {
+                    "type": "string",
+                    "description": "Public profile location if user has one"
+                },
+                "avatar_url": {
+                    "type": "string",
+                    "description": "User’s avatar url"
+                },
+                "resource": {
+                    "type": "string"
+                },
+                "resource_path": {
+                    "type": "string"
+                }
+            }
+        },
+        "Error": {
+            "type": "object",
+            "properties": {
+                "code": {
+                    "type": "integer",
+                    "format": "int32"
+                },
+                "message": {
+                    "type": "string"
+                },
+                "fields": {
+                    "type": "string"
+                }
+            }
+        }
+    }
+}
