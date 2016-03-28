@@ -1,11 +1,8 @@
-var should = require('chai').should();
+var CoinbaseApi = require('../javascript-client/src'),
+  should = require('chai').should();
 
-var CoinbaseApi = require('../javascript-client/src');
-var defaultClient = CoinbaseApi.ApiClient.instance;
-
-// Configure OAuth2 access token for authorization: coinbaseAccessCode
-var coinbaseAccessCode = defaultClient.authentications['coinbaseAccessCode'];
-coinbaseAccessCode.accessToken = require('../config').accessToken;
+CoinbaseApi.ApiClient.instance.authentications
+  .coinbaseAccessCode.accessToken = require('../config').accessToken;
 
 var usersApi = new CoinbaseApi.UsersApi();
 
