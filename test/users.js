@@ -6,18 +6,27 @@ CoinbaseApi.ApiClient.instance.authentications
 
 var usersApi = new CoinbaseApi.UsersApi();
 
+function getSuccessChecker(properties, done) {
+  return function(error, data, response) {
+    should.not.exist(error);
+    response.statusCode.should.equal(200);
+    properties.forEach(p => {
+      should.exist(data.data[p]);
+    });
+    console.log(JSON.stringify(data.data));
+    done();
+  };
+}
+
 describe('/user', function() {
   describe('get', function () {
     it('should respond with the current user', function (done) {
-      usersApi.userGet(function(error, data, response) {
-        should.not.exist(error);
-        response.statusCode.should.equal(200);
-        should.exist(data.data.username);
-        done();
-      });
+      usersApi.userGet(getSuccessChecker(['username'], done));
     });
   });
+
   describe('put', function () {
+    //TODO: Figure our the error "Limit is invalid"
     it('should update the user\'s name', function (done) {
       function getRandomName() {
         var letters = 'abcdefghijklnmopqrstuvwxyz',
@@ -36,12 +45,27 @@ describe('/user', function() {
         if (error) {
           console.log(error.text);
         }
-
         should.not.exist(error);
         response.statusCode.should.equal(200);
         data.data.name.should.equal(name);
         done();
       });
+    });
+  });
+});
+
+describe('/user/auth', function() {
+  describe('get', function () {
+    it('should show authorization information', function (done) {
+      usersApi.userAuthGet(getSuccessChecker(['scopes'], done));
+    });
+  });
+});
+
+describe('/user/{user_id}', function() {
+  describe('get', function () {
+    it('should show the user', function (done) {
+      usersApi.usersUserIdGet('891ae771-ce5a-5014-801b-5461b5481e80', getSuccessChecker(['username'], done));
     });
   });
 });
