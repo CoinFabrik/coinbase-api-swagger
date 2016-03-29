@@ -3,6 +3,6 @@
 ## Properties
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**name** | **String** | New account name | [optional] 
+**name** | **String** | The account name | [optional] 
 
 

@@ -1,18 +1,18 @@
 (function(root, factory) {
   if (typeof define === 'function' && define.amd) {
     // AMD. Register as an anonymous module.
-    define(['../ApiClient', './Pagination', './Transaction'], factory);
+    define(['../ApiClient', './Address'], factory);
   } else if (typeof module === 'object' && module.exports) {
     // CommonJS-like environments that support module.exports, like Node.
-    module.exports = factory(require('../ApiClient'), require('./Pagination'), require('./Transaction'));
+    module.exports = factory(require('../ApiClient'), require('./Address'));
   } else {
     // Browser globals (root is window)
     if (!root.CoinbaseApi) {
       root.CoinbaseApi = {};
     }
-    root.CoinbaseApi.InlineResponse2002 = factory(root.CoinbaseApi.ApiClient, root.CoinbaseApi.Pagination, root.CoinbaseApi.Transaction);
+    root.CoinbaseApi.InlineResponse2002 = factory(root.CoinbaseApi.ApiClient, root.CoinbaseApi.Address);
   }
-}(this, function(ApiClient, Pagination, Transaction) {
+}(this, function(ApiClient, Address) {
   'use strict';
 
   /**
@@ -29,7 +29,6 @@
   var exports = function() {
 
 
-
   };
 
   /**
@@ -43,11 +42,8 @@
     if (data) { 
       obj = obj || new exports();
 
-      if (data.hasOwnProperty('pagination')) {
-        obj['pagination'] = Pagination.constructFromObject(data['pagination']);
-      }
       if (data.hasOwnProperty('data')) {
-        obj['data'] = ApiClient.convertToType(data['data'], [Transaction]);
+        obj['data'] = Address.constructFromObject(data['data']);
       }
     }
     return obj;
@@ -55,12 +51,7 @@
 
 
   /**
-   * @member {module:model/Pagination} pagination
-   */
-  exports.prototype['pagination'] = undefined;
-
-  /**
-   * @member {Array.<module:model/Transaction>} data
+   * @member {module:model/Address} data
    */
   exports.prototype['data'] = undefined;
 

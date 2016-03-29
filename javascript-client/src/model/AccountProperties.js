@@ -51,7 +51,7 @@
 
 
   /**
-   * New account name
+   * The account name
    * @member {String} name
    */
   exports.prototype['name'] = undefined;

@@ -1,12 +1,12 @@
 (function(factory) {
   if (typeof define === 'function' && define.amd) {
     // AMD. Register as an anonymous module.
-    define(['./ApiClient', './model/Account', './model/AccountProperties', './model/AccountProperties1', './model/Address', './model/Body', './model/InlineResponse200', './model/InlineResponse2001', './model/InlineResponse2002', './model/InlineResponse2003', './model/InlineResponse2004', './model/InlineResponse2004Data', './model/InlineResponse201', './model/InlineResponse2011', './model/MoneyHash', './model/Pagination', './model/Transaction', './model/User', './api/AccountsApi', './api/AddressesApi', './api/UsersApi'], factory);
+    define(['./ApiClient', './model/Account', './model/AccountProperties', './model/AccountProperties1', './model/Address', './model/Body', './model/InlineResponse200', './model/InlineResponse2001', './model/InlineResponse2002', './model/InlineResponse2003', './model/InlineResponse2004', './model/InlineResponse2004Data', './model/InlineResponse201', './model/MoneyHash', './model/Pagination', './model/User', './api/AccountsApi', './api/UsersApi'], factory);
   } else if (typeof module === 'object' && module.exports) {
     // CommonJS-like environments that support module.exports, like Node.
-    module.exports = factory(require('./ApiClient'), require('./model/Account'), require('./model/AccountProperties'), require('./model/AccountProperties1'), require('./model/Address'), require('./model/Body'), require('./model/InlineResponse200'), require('./model/InlineResponse2001'), require('./model/InlineResponse2002'), require('./model/InlineResponse2003'), require('./model/InlineResponse2004'), require('./model/InlineResponse2004Data'), require('./model/InlineResponse201'), require('./model/InlineResponse2011'), require('./model/MoneyHash'), require('./model/Pagination'), require('./model/Transaction'), require('./model/User'), require('./api/AccountsApi'), require('./api/AddressesApi'), require('./api/UsersApi'));
+    module.exports = factory(require('./ApiClient'), require('./model/Account'), require('./model/AccountProperties'), require('./model/AccountProperties1'), require('./model/Address'), require('./model/Body'), require('./model/InlineResponse200'), require('./model/InlineResponse2001'), require('./model/InlineResponse2002'), require('./model/InlineResponse2003'), require('./model/InlineResponse2004'), require('./model/InlineResponse2004Data'), require('./model/InlineResponse201'), require('./model/MoneyHash'), require('./model/Pagination'), require('./model/User'), require('./api/AccountsApi'), require('./api/UsersApi'));
   }
-}(function(ApiClient, Account, AccountProperties, AccountProperties1, Address, Body, InlineResponse200, InlineResponse2001, InlineResponse2002, InlineResponse2003, InlineResponse2004, InlineResponse2004Data, InlineResponse201, InlineResponse2011, MoneyHash, Pagination, Transaction, User, AccountsApi, AddressesApi, UsersApi) {
+}(function(ApiClient, Account, AccountProperties, AccountProperties1, Address, Body, InlineResponse200, InlineResponse2001, InlineResponse2002, InlineResponse2003, InlineResponse2004, InlineResponse2004Data, InlineResponse201, MoneyHash, Pagination, User, AccountsApi, UsersApi) {
   'use strict';
 
   /**
@@ -107,11 +107,6 @@
      */
     InlineResponse201: InlineResponse201,
     /**
-     * The InlineResponse2011 model constructor.
-     * @property {module:model/InlineResponse2011}
-     */
-    InlineResponse2011: InlineResponse2011,
-    /**
      * The MoneyHash model constructor.
      * @property {module:model/MoneyHash}
      */
@@ -122,11 +117,6 @@
      */
     Pagination: Pagination,
     /**
-     * The Transaction model constructor.
-     * @property {module:model/Transaction}
-     */
-    Transaction: Transaction,
-    /**
      * The User model constructor.
      * @property {module:model/User}
      */
@@ -136,11 +126,6 @@
      * @property {module:api/AccountsApi}
      */
     AccountsApi: AccountsApi,
-    /**
-     * The AddressesApi service constructor.
-     * @property {module:api/AddressesApi}
-     */
-    AddressesApi: AddressesApi,
     /**
      * The UsersApi service constructor.
      * @property {module:api/UsersApi}
