@@ -47,4 +47,18 @@ describe('/accounts/{account_id}', function() {
       accountsApi.accountsAccountIdGet("f4018402-30f0-58b1-81ba-065fb517ff22", getSuccessChecker(['currency', 'balance'], done));
     });
   });
+  describe('put', function () {
+    it('should update the account\'s name', function (done) {
+      var opts = {
+        'accountProperties': {
+          name: 'asdf'
+        }
+      };
+      accountsApi.accountsAccountIdPut(
+        "f4018402-30f0-58b1-81ba-065fb517ff22",
+        opts,
+        getSuccessChecker(['currency', 'balance'], done)
+      );
+    });
+  });
 });
