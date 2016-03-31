@@ -159,14 +159,21 @@
     /**
      * Show an account
      * Show current user’s account. To access user’s primary account, primary keyword can be used instead of the account id in the URL.
+     * @param {String} accountId The account id
      * @param {module:api/AccountsApi~accountsAccountIdGetCallback} callback The callback function, accepting three arguments: error, data, response
      * data is of type: {module:model/InlineResponse201}
      */
-    this.accountsAccountIdGet = function(callback) {
+    this.accountsAccountIdGet = function(accountId, callback) {
       var postBody = null;
+
+      // verify the required parameter 'accountId' is set
+      if (accountId == undefined || accountId == null) {
+        throw "Missing the required parameter 'accountId' when calling accountsAccountIdGet";
+      }
 
 
       var pathParams = {
+        'account_id': accountId
       };
       var queryParams = {
       };
@@ -237,17 +244,24 @@
     /**
      * Update account
      * Modifies user’s account name.
+     * @param {String} accountId The account id
      * @param {Object} opts Optional parameters
      * @param {module:model/AccountProperties1} opts.accountProperties Properties to update
      * @param {module:api/AccountsApi~accountsAccountIdPutCallback} callback The callback function, accepting three arguments: error, data, response
      * data is of type: {module:model/InlineResponse201}
      */
-    this.accountsAccountIdPut = function(opts, callback) {
+    this.accountsAccountIdPut = function(accountId, opts, callback) {
       opts = opts || {};
       var postBody = opts['accountProperties'];
 
+      // verify the required parameter 'accountId' is set
+      if (accountId == undefined || accountId == null) {
+        throw "Missing the required parameter 'accountId' when calling accountsAccountIdPut";
+      }
+
 
       var pathParams = {
+        'account_id': accountId
       };
       var queryParams = {
       };

@@ -151,7 +151,7 @@ null (empty response body)
 
 <a name="accountsAccountIdGet"></a>
 # **accountsAccountIdGet**
-> InlineResponse201 accountsAccountIdGet
+> InlineResponse201 accountsAccountIdGet(accountId)
 
 Show an account
 
@@ -168,6 +168,9 @@ coinbaseAccessCode.accessToken = "YOUR ACCESS TOKEN"
 
 var apiInstance = new CoinbaseApi.AccountsApi()
 
+var accountId = "accountId_example"; // {String} The account id
+
+
 var callback = function(error, data, response) {
   if (error) {
     console.error(error);
@@ -175,11 +178,14 @@ var callback = function(error, data, response) {
     console.log('API called successfully. Returned data: ' + data);
   }
 };
-api.accountsAccountIdGet(callback);
+api.accountsAccountIdGet(accountId, callback);
 ```
 
 ### Parameters
-This endpoint does not need any parameter.
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **accountId** | **String**| The account id | 
 
 ### Return type
 
@@ -241,7 +247,7 @@ This endpoint does not need any parameter.
 
 <a name="accountsAccountIdPut"></a>
 # **accountsAccountIdPut**
-> InlineResponse201 accountsAccountIdPut(opts)
+> InlineResponse201 accountsAccountIdPut(accountId, opts)
 
 Update account
 
@@ -258,6 +264,8 @@ coinbaseAccessCode.accessToken = "YOUR ACCESS TOKEN"
 
 var apiInstance = new CoinbaseApi.AccountsApi()
 
+var accountId = "accountId_example"; // {String} The account id
+
 var opts = { 
   'accountProperties': new CoinbaseApi.AccountProperties1() // {AccountProperties1} Properties to update
 };
@@ -269,13 +277,14 @@ var callback = function(error, data, response) {
     console.log('API called successfully. Returned data: ' + data);
   }
 };
-api.accountsAccountIdPut(opts, callback);
+api.accountsAccountIdPut(accountId, opts, callback);
 ```
 
 ### Parameters
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
+ **accountId** | **String**| The account id | 
  **accountProperties** | [**AccountProperties1**](AccountProperties1.md)| Properties to update | [optional] 
 
 ### Return type
