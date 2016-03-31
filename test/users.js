@@ -13,7 +13,6 @@ function getSuccessChecker(properties, done) {
     properties.forEach(p => {
       should.exist(data.data[p]);
     });
-    console.log(JSON.stringify(data.data));
     done();
   };
 }

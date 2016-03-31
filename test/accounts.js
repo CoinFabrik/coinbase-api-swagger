@@ -4,68 +4,47 @@ var CoinbaseApi = require('../javascript-client/src'),
 CoinbaseApi.ApiClient.instance.authentications
   .coinbaseAccessCode.accessToken = require('../config').accessToken;
 
-var usersApi = new CoinbaseApi.UsersApi();
+var accountsApi = new CoinbaseApi.AccountsApi();
 
 function getSuccessChecker(properties, done) {
   return function(error, data, response) {
     should.not.exist(error);
-    response.statusCode.should.equal(200);
     properties.forEach(p => {
       should.exist(data.data[p]);
     });
-    console.log(JSON.stringify(data.data));
     done();
   };
 }
 
-describe('/user', function() {
+describe('/accounts', function() {
   describe('get', function () {
-    it('should respond with the current user', function (done) {
-      usersApi.userGet(getSuccessChecker(['username'], done));
-    });
-  });
-
-  describe('put', function () {
-    //TODO: Figure our the error "Limit is invalid"
-    it('should update the user\'s name', function (done) {
-      function getRandomName() {
-        var letters = 'abcdefghijklnmopqrstuvwxyz',
-          name = '';
-        for  (var i = 0; i < 10; i++) {
-          name = name + letters[Math.floor(Math.random() * (letters.length - 1))];
-        }
-        return name;
-      }
-      var name = getRandomName();
-      console.log(name);
-      var opts = {
-         body: {name: name} // {Body} Properties to update
-      };
-      usersApi.userPut(opts, function(error, data, response) {
-        if (error) {
-          console.log(error.text);
-        }
+    it('should show the accounts', function (done) {
+      accountsApi.accountsGet(function(error, data, response) {
         should.not.exist(error);
         response.statusCode.should.equal(200);
-        data.data.name.should.equal(name);
+        should.exist(data.data);
+        data.data.should.be.a('array');
         done();
       });
     });
   });
-});
-
-describe('/user/auth', function() {
-  describe('get', function () {
-    it('should show authorization information', function (done) {
-      usersApi.userAuthGet(getSuccessChecker(['scopes'], done));
+  describe('post', function () {
+    var opts = {
+      'accountProperties': {
+        name: 'asdf'
+      } // {AccountProperties} Account properties
+    };
+    it('should create a new account', function (done) {
+      accountsApi.accountsPost(opts, getSuccessChecker(['primary', 'type', 'currency'], done));
     });
   });
+
 });
 
-describe('/user/{user_id}', function() {
+describe('/accounts/{account_id}', function() {
   describe('get', function () {
-    it('should show the user', function (done) {
-      usersApi.usersUserIdGet('891ae771-ce5a-5014-801b-5461b5481e80', getSuccessChecker(['username'], done));
+    it('should get the account', function (done) {
+      accountsApi.accountsAccountIdGet("f4018402-30f0-58b1-81ba-065fb517ff22", getSuccessChecker(['currency', 'balance'], done));
     });
   });
 });
