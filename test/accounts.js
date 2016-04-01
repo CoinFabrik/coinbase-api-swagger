@@ -44,7 +44,7 @@ describe('/accounts', function() {
 describe('/accounts/{account_id}', function() {
   describe('get', function () {
     it('should get the account', function (done) {
-      accountsApi.accountsAccountIdGet("f4018402-30f0-58b1-81ba-065fb517ff22", getSuccessChecker(['currency', 'balance'], done));
+      accountsApi.accountsAccountIdGet("00dc8029-7b08-5ba7-b08f-8c85be6a2b52", getSuccessChecker(['currency', 'balance'], done));
     });
   });
   describe('put', function () {
@@ -55,7 +55,7 @@ describe('/accounts/{account_id}', function() {
         }
       };
       accountsApi.accountsAccountIdPut(
-        "f4018402-30f0-58b1-81ba-065fb517ff22",
+        "00dc8029-7b08-5ba7-b08f-8c85be6a2b52",
         opts,
         getSuccessChecker(['currency', 'balance'], done)
       );
