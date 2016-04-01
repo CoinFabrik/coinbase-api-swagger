@@ -42,9 +42,32 @@ describe('/accounts', function() {
 });
 
 describe('/accounts/{account_id}', function() {
+  var account1, account2;
+  before(function(done) {
+    this.timeout(4000);
+    //create two accounts
+    accountsApi.accountsPost({
+      'accountProperties': {
+        name: 'account1'
+      }
+    }, function(error, data, response) {
+      should.not.exist(error);
+      account1 = data.data.id;
+      accountsApi.accountsPost({
+        'accountProperties': {
+          name: 'account2'
+        }
+      }, function(error, data) {
+        should.not.exist(error);
+        account2 = data.data.id;
+        console.log('Accounts: ' + account1 + ', ' + account2);
+        done();
+      });
+    });
+  });
   describe('get', function () {
     it('should get the account', function (done) {
-      accountsApi.accountsAccountIdGet("00dc8029-7b08-5ba7-b08f-8c85be6a2b52", getSuccessChecker(['currency', 'balance'], done));
+      accountsApi.accountsAccountIdGet(account1, getSuccessChecker(['currency', 'balance'], done));
     });
   });
   describe('put', function () {
@@ -55,10 +78,18 @@ describe('/accounts/{account_id}', function() {
         }
       };
       accountsApi.accountsAccountIdPut(
-        "00dc8029-7b08-5ba7-b08f-8c85be6a2b52",
+        account1,
         opts,
         getSuccessChecker(['currency', 'balance'], done)
       );
+    });
+  });
+  describe('delete', function () {
+    it('should delete an account', function (done) {
+      accountsApi.accountsAccountIdDelete(account2, function (err, data, response) {
+        response.statusCode.should.equal(204);
+        done();
+      });
     });
   });
 });
