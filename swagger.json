@@ -409,11 +409,11 @@
                     }
                 ],
                 "tags": [
-                    "Accounts"
+                    "Addresses"
                 ],
                 "responses": {
                     "200": {
-                        "description": "The accounts",
+                        "description": "The addresses",
                         "schema": {
                             "type": "object",
                             "properties": {
@@ -425,6 +425,50 @@
                                     "items": {
                                         "$ref": "#/definitions/Address"
                                     }
+                                }
+                            }
+                        }
+                    }
+                }
+            },
+            "post": {
+                "summary": "Create address",
+                "description": "Creates a new address for an account. As all the arguments are optinal, it’s possible just to do a empty POST which will create a new address. This is handy if you need to create new receive addresses for an account on-demand.\n\n\nAddresses can be created for all account types. With fiat accounts, funds will be received with Instant Exchange.\n",
+                "security": [
+                    {
+                        "coinbaseAccessCode": [
+                            "wallet:addresses:create"
+                        ]
+                    }
+                ],
+                "parameters": [
+                    {
+                        "in": "body",
+                        "name": "account_properties",
+                        "description": "Properties to update",
+                        "required": false,
+                        "schema": {
+                            "type": "object",
+                            "properties": {
+                                "name": {
+                                    "type": "string",
+                                    "description": "Address label"
+                                }
+                            }
+                        }
+                    }
+                ],
+                "tags": [
+                    "Addresses"
+                ],
+                "responses": {
+                    "201": {
+                        "description": "The created address",
+                        "schema": {
+                            "type": "object",
+                            "properties": {
+                                "data": {
+                                    "$ref": "#/definitions/Address"
                                 }
                             }
                         }
@@ -444,7 +488,7 @@
                     }
                 ],
                 "tags": [
-                    "Accounts"
+                    "Addresses"
                 ],
                 "responses": {
                     "200": {
@@ -454,6 +498,41 @@
                             "properties": {
                                 "data": {
                                     "$ref": "#/definitions/Address"
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        },
+        "/accounts/{account_id}/addresses/{address_id}/transactions": {
+            "get": {
+                "summary": "List address’s transactions",
+                "description": "list transactions that have been sent to a specific address. Regular bitcoin address can be used in place of address_id but the address has to be associated to the correct account.\n",
+                "security": [
+                    {
+                        "coinbaseAccessCode": [
+                            "wallet:transactions:read"
+                        ]
+                    }
+                ],
+                "tags": [
+                    "Addresses"
+                ],
+                "responses": {
+                    "200": {
+                        "description": "The transactions",
+                        "schema": {
+                            "type": "object",
+                            "properties": {
+                                "pagination": {
+                                    "$ref": "#/definitions/Pagination"
+                                },
+                                "data": {
+                                    "type": "array",
+                                    "items": {
+                                        "$ref": "#/definitions/Transaction"
+                                    }
                                 }
                             }
                         }
@@ -652,6 +731,78 @@
                 },
                 "resource_path": {
                     "type": "string"
+                }
+            }
+        },
+        "Transaction": {
+            "type": "object",
+            "properties": {
+                "id": {
+                    "type": "string",
+                    "description": "Resource ID"
+                },
+                "type": {
+                    "type": "string",
+                    "description": "Transaction type"
+                },
+                "status": {
+                    "type": "string",
+                    "description": "Status"
+                },
+                "amount": {
+                    "$ref": "#/definitions/MoneyHash",
+                    "description": "Amount in bitcoin"
+                },
+                "native_amount": {
+                    "$ref": "#/definitions/MoneyHash",
+                    "description": "Amount in user’s native currency"
+                },
+                "description": {
+                    "type": "string",
+                    "description": "User defined description"
+                },
+                "instant_exchange": {
+                    "type": "boolean",
+                    "description": "Indicator if the transaction was instant exchanged (received into a bitcoin address for a fiat account)"
+                },
+                "created_at": {
+                    "type": "dateTime",
+                    "description": "Timestamp indicating when was the address was created."
+                },
+                "updated_at": {
+                    "type": "dateTime",
+                    "description": "Timestamp indicating when was the address last updated."
+                },
+                "resource": {
+                    "type": "string",
+                    "description": "This value is always 'address'."
+                },
+                "resource_path": {
+                    "type": "string"
+                },
+                "details": {
+                    "type": "object",
+                    "description": "Detailed information about the transaction"
+                },
+                "network": {
+                    "type": "object",
+                    "description": "Information about bitcoin network including network transaction hash if transaction was on-blockchain. Only available for certain types of transactions"
+                },
+                "to": {
+                    "type": "object",
+                    "description": "The receiving party of a debit transaction. Usually another resource but can also be another type like email. Only available for certain types of transactions"
+                },
+                "from": {
+                    "type": "object",
+                    "description": "The originating party of a credit transaction. Usually another resource but can also be another type like bitcoin network. Only available for certain types of transactions"
+                },
+                "address": {
+                    "type": "object",
+                    "description": "Associated bitcoin address for received payment"
+                },
+                "application": {
+                    "type": "object",
+                    "description": "Associated OAuth2 application"
                 }
             }
         }

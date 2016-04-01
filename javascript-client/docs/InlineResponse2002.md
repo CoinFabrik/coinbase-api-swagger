@@ -3,6 +3,7 @@
 ## Properties
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**data** | [**Address**](Address.md) |  | [optional] 
+**pagination** | [**Pagination**](Pagination.md) |  | [optional] 
+**data** | [**[Transaction]**](Transaction.md) |  | [optional] 
 
 
