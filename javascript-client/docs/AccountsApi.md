@@ -106,7 +106,7 @@ This endpoint does not need any parameter.
 
 <a name="accountsAccountIdDelete"></a>
 # **accountsAccountIdDelete**
-> accountsAccountIdDelete
+> accountsAccountIdDelete(accountId)
 
 Delete account
 
@@ -123,6 +123,9 @@ coinbaseAccessCode.accessToken = "YOUR ACCESS TOKEN"
 
 var apiInstance = new CoinbaseApi.AccountsApi()
 
+var accountId = "accountId_example"; // {String} The account id
+
+
 var callback = function(error, data, response) {
   if (error) {
     console.error(error);
@@ -130,11 +133,14 @@ var callback = function(error, data, response) {
     console.log('API called successfully.');
   }
 };
-api.accountsAccountIdDelete(callback);
+api.accountsAccountIdDelete(accountId, callback);
 ```
 
 ### Parameters
-This endpoint does not need any parameter.
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **accountId** | **String**| The account id | 
 
 ### Return type
 

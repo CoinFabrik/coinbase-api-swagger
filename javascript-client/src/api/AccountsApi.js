@@ -121,13 +121,20 @@
     /**
      * Delete account
      * Removes user’s account. In order to remove an account it can’t be\n\n- Primary account\n- Account with non-zero balance\n- Fiat account\n- Vault with a pending withdrawal
+     * @param {String} accountId The account id
      * @param {module:api/AccountsApi~accountsAccountIdDeleteCallback} callback The callback function, accepting three arguments: error, data, response
      */
-    this.accountsAccountIdDelete = function(callback) {
+    this.accountsAccountIdDelete = function(accountId, callback) {
       var postBody = null;
+
+      // verify the required parameter 'accountId' is set
+      if (accountId == undefined || accountId == null) {
+        throw "Missing the required parameter 'accountId' when calling accountsAccountIdDelete";
+      }
 
 
       var pathParams = {
+        'account_id': accountId
       };
       var queryParams = {
       };
