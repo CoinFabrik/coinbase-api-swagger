@@ -42,7 +42,7 @@
 
     /**
      * Delete account
-     * Removes user’s account. In order to remove an account it can’t be\n\n- Primary account\n- Account with non-zero balance\n- Fiat account\n- Vault with a pending withdrawal
+     * Removes user\u2019s account. In order to remove an account it can\u2019t be\n\n- Primary account\n- Account with non-zero balance\n- Fiat account\n- Vault with a pending withdrawal\n
      * @param {String} accountId The account id
      * @param {module:api/AccountsApi~accountsAccountIdDeleteCallback} callback The callback function, accepting three arguments: error, data, response
      */
@@ -87,7 +87,7 @@
 
     /**
      * Show an account
-     * Show current user’s account. To access user’s primary account, primary keyword can be used instead of the account id in the URL.
+     * Show current user\u2019s account. To access user\u2019s primary account, primary keyword can be used instead of the account id in the URL.
      * @param {String} accountId The account id
      * @param {module:api/AccountsApi~accountsAccountIdGetCallback} callback The callback function, accepting three arguments: error, data, response
      * data is of type: {module:model/InlineResponse201}
@@ -134,14 +134,21 @@
     /**
      * Set account as primary
      * Promote an account as primary account.
+     * @param {String} accountId The account id
      * @param {module:api/AccountsApi~accountsAccountIdPrimaryGetCallback} callback The callback function, accepting three arguments: error, data, response
      * data is of type: {module:model/InlineResponse201}
      */
-    this.accountsAccountIdPrimaryGet = function(callback) {
+    this.accountsAccountIdPrimaryGet = function(accountId, callback) {
       var postBody = null;
+
+      // verify the required parameter 'accountId' is set
+      if (accountId == undefined || accountId == null) {
+        throw "Missing the required parameter 'accountId' when calling accountsAccountIdPrimaryGet";
+      }
 
 
       var pathParams = {
+        'account_id': accountId
       };
       var queryParams = {
       };
@@ -172,7 +179,7 @@
 
     /**
      * Update account
-     * Modifies user’s account name.
+     * Modifies user\u2019s account name.
      * @param {String} accountId The account id
      * @param {Object} opts Optional parameters
      * @param {module:model/AccountProperties1} opts.accountProperties Properties to update
@@ -221,7 +228,7 @@
 
     /**
      * List accounts
-     * Lists current user’s accounts to which the authentication method has access to.
+     * Lists current user\u2019s accounts to which the authentication method has access to.
      * @param {module:api/AccountsApi~accountsGetCallback} callback The callback function, accepting three arguments: error, data, response
      * data is of type: {module:model/InlineResponse200}
      */

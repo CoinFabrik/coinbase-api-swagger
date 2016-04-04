@@ -33,6 +33,8 @@
 
 
 
+
+
   };
 
   /**
@@ -54,6 +56,12 @@
       }
       if (data.hasOwnProperty('name')) {
         obj['name'] = ApiClient.convertToType(data['name'], 'String');
+      }
+      if (data.hasOwnProperty('created_at')) {
+        obj['created_at'] = ApiClient.convertToType(data['created_at'], 'String');
+      }
+      if (data.hasOwnProperty('updated_at')) {
+        obj['updated_at'] = ApiClient.convertToType(data['updated_at'], 'String');
       }
       if (data.hasOwnProperty('resource')) {
         obj['resource'] = ApiClient.convertToType(data['resource'], 'String');
@@ -83,6 +91,18 @@
    * @member {String} name
    */
   exports.prototype['name'] = undefined;
+
+  /**
+   * Timestamp indicating when was the address was created.
+   * @member {String} created_at
+   */
+  exports.prototype['created_at'] = undefined;
+
+  /**
+   * Timestamp indicating when was the address last updated.
+   * @member {String} updated_at
+   */
+  exports.prototype['updated_at'] = undefined;
 
   /**
    * This value is always 'address'.

@@ -89,7 +89,7 @@
   exports.prototype['id'] = undefined;
 
   /**
-   * User’s public name
+   * User\u2019s public name
    * @member {String} name
    */
   exports.prototype['name'] = undefined;
@@ -100,13 +100,13 @@
   exports.prototype['username'] = undefined;
 
   /**
-   * Location for user’s public profile
+   * Location for user\u2019s public profile
    * @member {String} profile_location
    */
   exports.prototype['profile_location'] = undefined;
 
   /**
-   * Bio for user’s public profile
+   * Bio for user\u2019s public profile
    * @member {String} profile_bio
    */
   exports.prototype['profile_bio'] = undefined;
@@ -118,7 +118,7 @@
   exports.prototype['profile_url'] = undefined;
 
   /**
-   * User’s avatar url
+   * User\u2019s avatar url
    * @member {String} avatar_url
    */
   exports.prototype['avatar_url'] = undefined;

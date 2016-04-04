@@ -42,7 +42,7 @@
 
     /**
      * Show authorization information
-     * Get current user’s authorization information including granted scopes and send limits when using OAuth2 authentication.
+     * Get current user\u2019s authorization information including granted scopes and send limits when using OAuth2 authentication.
      * @param {module:api/UsersApi~userAuthGetCallback} callback The callback function, accepting three arguments: error, data, response
      * data is of type: {module:model/InlineResponse2004}
      */
@@ -81,7 +81,7 @@
 
     /**
      * Show current user
-     * Get current user’s public information. To get user’s email or private information, use permissions wallet:user:email and wallet:user:read.
+     * Get current user\u2019s public information. To get user\u2019s email or private information, use permissions wallet:user:email and wallet:user:read.
      * @param {module:api/UsersApi~userGetCallback} callback The callback function, accepting three arguments: error, data, response
      * data is of type: {module:model/InlineResponse2003}
      */
@@ -162,7 +162,7 @@
 
     /**
      * Show a user
-     * Get any user’s public information with their ID.
+     * Get any user\u2019s public information with their ID.
      * @param {String} userId The user id
      * @param {module:api/UsersApi~usersUserIdGetCallback} callback The callback function, accepting three arguments: error, data, response
      * data is of type: {module:model/InlineResponse2003}

@@ -18,7 +18,7 @@ Method | HTTP request | Description
 
 Delete account
 
-Removes user’s account. In order to remove an account it can’t be\n\n- Primary account\n- Account with non-zero balance\n- Fiat account\n- Vault with a pending withdrawal
+Removes user\u2019s account. In order to remove an account it can\u2019t be\n\n- Primary account\n- Account with non-zero balance\n- Fiat account\n- Vault with a pending withdrawal\n
 
 ### Example
 ```javascript
@@ -69,7 +69,7 @@ null (empty response body)
 
 Show an account
 
-Show current user’s account. To access user’s primary account, primary keyword can be used instead of the account id in the URL.
+Show current user\u2019s account. To access user\u2019s primary account, primary keyword can be used instead of the account id in the URL.
 
 ### Example
 ```javascript
@@ -116,7 +116,7 @@ Name | Type | Description  | Notes
 
 <a name="accountsAccountIdPrimaryGet"></a>
 # **accountsAccountIdPrimaryGet**
-> InlineResponse201 accountsAccountIdPrimaryGet
+> InlineResponse201 accountsAccountIdPrimaryGet(accountId)
 
 Set account as primary
 
@@ -133,6 +133,9 @@ coinbaseAccessCode.accessToken = "YOUR ACCESS TOKEN"
 
 var apiInstance = new CoinbaseApi.AccountsApi()
 
+var accountId = "accountId_example"; // {String} The account id
+
+
 var callback = function(error, data, response) {
   if (error) {
     console.error(error);
@@ -140,11 +143,14 @@ var callback = function(error, data, response) {
     console.log('API called successfully. Returned data: ' + data);
   }
 };
-api.accountsAccountIdPrimaryGet(callback);
+api.accountsAccountIdPrimaryGet(accountId, callback);
 ```
 
 ### Parameters
-This endpoint does not need any parameter.
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **accountId** | **String**| The account id | 
 
 ### Return type
 
@@ -165,7 +171,7 @@ This endpoint does not need any parameter.
 
 Update account
 
-Modifies user’s account name.
+Modifies user\u2019s account name.
 
 ### Example
 ```javascript
@@ -220,7 +226,7 @@ Name | Type | Description  | Notes
 
 List accounts
 
-Lists current user’s accounts to which the authentication method has access to.
+Lists current user\u2019s accounts to which the authentication method has access to.
 
 ### Example
 ```javascript

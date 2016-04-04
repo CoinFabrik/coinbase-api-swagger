@@ -37,6 +37,8 @@
 
 
 
+
+
   };
 
   /**
@@ -71,6 +73,12 @@
       if (data.hasOwnProperty('native_balance')) {
         obj['native_balance'] = MoneyHash.constructFromObject(data['native_balance']);
       }
+      if (data.hasOwnProperty('created_at')) {
+        obj['created_at'] = ApiClient.convertToType(data['created_at'], 'String');
+      }
+      if (data.hasOwnProperty('updated_at')) {
+        obj['updated_at'] = ApiClient.convertToType(data['updated_at'], 'String');
+      }
       if (data.hasOwnProperty('resource')) {
         obj['resource'] = ApiClient.convertToType(data['resource'], 'String');
       }
@@ -101,7 +109,7 @@
   exports.prototype['primary'] = undefined;
 
   /**
-   * Account’s type. Available values: wallet, fiat, multisig, vault, multisig_vault
+   * Account\u2019s type. Available values: wallet, fiat, multisig, vault, multisig_vault
    * @member {String} type
    */
   exports.prototype['type'] = undefined;
@@ -113,16 +121,26 @@
   exports.prototype['currency'] = undefined;
 
   /**
-   * Balance in BTC
    * @member {module:model/MoneyHash} balance
    */
   exports.prototype['balance'] = undefined;
 
   /**
-   * Balance in user’s native currency
    * @member {module:model/MoneyHash} native_balance
    */
   exports.prototype['native_balance'] = undefined;
+
+  /**
+   * Timestamp indicating when was the account created.
+   * @member {String} created_at
+   */
+  exports.prototype['created_at'] = undefined;
+
+  /**
+   * Timestamp indicating when was the account last updated.
+   * @member {String} updated_at
+   */
+  exports.prototype['updated_at'] = undefined;
 
   /**
    * This value is always 'account'.

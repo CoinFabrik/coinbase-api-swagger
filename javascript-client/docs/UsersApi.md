@@ -16,7 +16,7 @@ Method | HTTP request | Description
 
 Show authorization information
 
-Get current user’s authorization information including granted scopes and send limits when using OAuth2 authentication.
+Get current user\u2019s authorization information including granted scopes and send limits when using OAuth2 authentication.
 
 ### Example
 ```javascript
@@ -61,7 +61,7 @@ This endpoint does not need any parameter.
 
 Show current user
 
-Get current user’s public information. To get user’s email or private information, use permissions wallet:user:email and wallet:user:read.
+Get current user\u2019s public information. To get user\u2019s email or private information, use permissions wallet:user:email and wallet:user:read.
 
 ### Example
 ```javascript
@@ -158,7 +158,7 @@ Name | Type | Description  | Notes
 
 Show a user
 
-Get any user’s public information with their ID.
+Get any user\u2019s public information with their ID.
 
 ### Example
 ```javascript

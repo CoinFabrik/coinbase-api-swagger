@@ -43,6 +43,8 @@
 
 
 
+
+
   };
 
   /**
@@ -76,6 +78,12 @@
       }
       if (data.hasOwnProperty('instant_exchange')) {
         obj['instant_exchange'] = ApiClient.convertToType(data['instant_exchange'], 'Boolean');
+      }
+      if (data.hasOwnProperty('created_at')) {
+        obj['created_at'] = ApiClient.convertToType(data['created_at'], 'String');
+      }
+      if (data.hasOwnProperty('updated_at')) {
+        obj['updated_at'] = ApiClient.convertToType(data['updated_at'], 'String');
       }
       if (data.hasOwnProperty('resource')) {
         obj['resource'] = ApiClient.convertToType(data['resource'], 'String');
@@ -125,13 +133,11 @@
   exports.prototype['status'] = undefined;
 
   /**
-   * Amount in bitcoin
    * @member {module:model/MoneyHash} amount
    */
   exports.prototype['amount'] = undefined;
 
   /**
-   * Amount in user’s native currency
    * @member {module:model/MoneyHash} native_amount
    */
   exports.prototype['native_amount'] = undefined;
@@ -147,6 +153,18 @@
    * @member {Boolean} instant_exchange
    */
   exports.prototype['instant_exchange'] = undefined;
+
+  /**
+   * Timestamp indicating when was the address was created.
+   * @member {String} created_at
+   */
+  exports.prototype['created_at'] = undefined;
+
+  /**
+   * Timestamp indicating when was the address last updated.
+   * @member {String} updated_at
+   */
+  exports.prototype['updated_at'] = undefined;
 
   /**
    * This value is always 'address'.

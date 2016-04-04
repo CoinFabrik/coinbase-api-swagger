@@ -382,6 +382,15 @@
                 "tags": [
                     "Accounts"
                 ],
+                "parameters": [
+                    {
+                        "name": "account_id",
+                        "in": "path",
+                        "description": "The account id",
+                        "required": true,
+                        "type": "string"
+                    }
+                ],
                 "responses": {
                     "200": {
                         "description": "The account in question",
@@ -411,6 +420,15 @@
                 "tags": [
                     "Addresses"
                 ],
+                "parameters": [
+                    {
+                        "name": "account_id",
+                        "in": "path",
+                        "description": "The account id",
+                        "required": true,
+                        "type": "string"
+                    }
+                ],
                 "responses": {
                     "200": {
                         "description": "The addresses",
@@ -433,7 +451,7 @@
             },
             "post": {
                 "summary": "Create address",
-                "description": "Creates a new address for an account. As all the arguments are optinal, it’s possible just to do a empty POST which will create a new address. This is handy if you need to create new receive addresses for an account on-demand.\n\n\nAddresses can be created for all account types. With fiat accounts, funds will be received with Instant Exchange.\n",
+                "description": "Creates a new address for an account. As all the arguments are optinal, it’s possible just to do a empty POST which will create a new address. This is handy if you need to create new receive addresses for an account on-demand.\n\n\n\n\nAddresses can be created for all account types. With fiat accounts, funds will be received with Instant Exchange.\n",
                 "security": [
                     {
                         "coinbaseAccessCode": [
@@ -442,6 +460,13 @@
                     }
                 ],
                 "parameters": [
+                    {
+                        "name": "account_id",
+                        "in": "path",
+                        "description": "The account id",
+                        "required": true,
+                        "type": "string"
+                    },
                     {
                         "in": "body",
                         "name": "account_properties",
@@ -490,6 +515,22 @@
                 "tags": [
                     "Addresses"
                 ],
+                "parameters": [
+                    {
+                        "name": "account_id",
+                        "in": "path",
+                        "description": "The account id",
+                        "required": true,
+                        "type": "string"
+                    },
+                    {
+                        "name": "address_id",
+                        "in": "path",
+                        "description": "The account id",
+                        "required": true,
+                        "type": "string"
+                    }
+                ],
                 "responses": {
                     "200": {
                         "description": "The address",
@@ -518,6 +559,22 @@
                 ],
                 "tags": [
                     "Addresses"
+                ],
+                "parameters": [
+                    {
+                        "name": "account_id",
+                        "in": "path",
+                        "description": "The account id",
+                        "required": true,
+                        "type": "string"
+                    },
+                    {
+                        "name": "address_id",
+                        "in": "path",
+                        "description": "The account id",
+                        "required": true,
+                        "type": "string"
+                    }
                 ],
                 "responses": {
                     "200": {
@@ -624,13 +681,13 @@
             "type": "object",
             "properties": {
                 "ending_before": {
-                    "type": "int"
+                    "type": "integer"
                 },
                 "starting_after": {
-                    "type": "int"
+                    "type": "integer"
                 },
                 "limit": {
-                    "type": "int"
+                    "type": "integer"
                 },
                 "order": {
                     "type": "string"
@@ -678,19 +735,17 @@
                     "description": "Account's currency"
                 },
                 "balance": {
-                    "$ref": "#/definitions/MoneyHash",
-                    "description": "Balance in BTC"
+                    "$ref": "#/definitions/MoneyHash"
                 },
                 "native_balance": {
-                    "$ref": "#/definitions/MoneyHash",
-                    "description": "Balance in user’s native currency"
+                    "$ref": "#/definitions/MoneyHash"
                 },
                 "created_at": {
-                    "type": "dateTime",
+                    "type": "string",
                     "description": "Timestamp indicating when was the account created."
                 },
                 "updated_at": {
-                    "type": "dateTime",
+                    "type": "string",
                     "description": "Timestamp indicating when was the account last updated."
                 },
                 "resource": {
@@ -718,11 +773,11 @@
                     "description": "User defined label for the address"
                 },
                 "created_at": {
-                    "type": "dateTime",
+                    "type": "string",
                     "description": "Timestamp indicating when was the address was created."
                 },
                 "updated_at": {
-                    "type": "dateTime",
+                    "type": "string",
                     "description": "Timestamp indicating when was the address last updated."
                 },
                 "resource": {
@@ -750,12 +805,10 @@
                     "description": "Status"
                 },
                 "amount": {
-                    "$ref": "#/definitions/MoneyHash",
-                    "description": "Amount in bitcoin"
+                    "$ref": "#/definitions/MoneyHash"
                 },
                 "native_amount": {
-                    "$ref": "#/definitions/MoneyHash",
-                    "description": "Amount in user’s native currency"
+                    "$ref": "#/definitions/MoneyHash"
                 },
                 "description": {
                     "type": "string",
@@ -766,11 +819,11 @@
                     "description": "Indicator if the transaction was instant exchanged (received into a bitcoin address for a fiat account)"
                 },
                 "created_at": {
-                    "type": "dateTime",
+                    "type": "string",
                     "description": "Timestamp indicating when was the address was created."
                 },
                 "updated_at": {
-                    "type": "dateTime",
+                    "type": "string",
                     "description": "Timestamp indicating when was the address last updated."
                 },
                 "resource": {

@@ -42,15 +42,29 @@
 
     /**
      * Show an address
-     * Show an individual address for an account.\nRegular bitcoin address can be used in place of address_id but the address has to be associated to the correct account.\n  \n*Important* Addresses should be considered one time use only.
+     * Show an individual address for an account.\nRegular bitcoin address can be used in place of address_id but the address has to be associated to the correct account.\n  \n*Important* Addresses should be considered one time use only. \n
+     * @param {String} accountId The account id
+     * @param {String} addressId The account id
      * @param {module:api/AddressesApi~accountsAccountIdAddressesAddressIdGetCallback} callback The callback function, accepting three arguments: error, data, response
      * data is of type: {module:model/InlineResponse2011}
      */
-    this.accountsAccountIdAddressesAddressIdGet = function(callback) {
+    this.accountsAccountIdAddressesAddressIdGet = function(accountId, addressId, callback) {
       var postBody = null;
+
+      // verify the required parameter 'accountId' is set
+      if (accountId == undefined || accountId == null) {
+        throw "Missing the required parameter 'accountId' when calling accountsAccountIdAddressesAddressIdGet";
+      }
+
+      // verify the required parameter 'addressId' is set
+      if (addressId == undefined || addressId == null) {
+        throw "Missing the required parameter 'addressId' when calling accountsAccountIdAddressesAddressIdGet";
+      }
 
 
       var pathParams = {
+        'account_id': accountId,
+        'address_id': addressId
       };
       var queryParams = {
       };
@@ -80,16 +94,30 @@
      */
 
     /**
-     * List address’s transactions
-     * list transactions that have been sent to a specific address. Regular bitcoin address can be used in place of address_id but the address has to be associated to the correct account.
+     * List address\u2019s transactions
+     * list transactions that have been sent to a specific address. Regular bitcoin address can be used in place of address_id but the address has to be associated to the correct account.\n
+     * @param {String} accountId The account id
+     * @param {String} addressId The account id
      * @param {module:api/AddressesApi~accountsAccountIdAddressesAddressIdTransactionsGetCallback} callback The callback function, accepting three arguments: error, data, response
      * data is of type: {module:model/InlineResponse2002}
      */
-    this.accountsAccountIdAddressesAddressIdTransactionsGet = function(callback) {
+    this.accountsAccountIdAddressesAddressIdTransactionsGet = function(accountId, addressId, callback) {
       var postBody = null;
+
+      // verify the required parameter 'accountId' is set
+      if (accountId == undefined || accountId == null) {
+        throw "Missing the required parameter 'accountId' when calling accountsAccountIdAddressesAddressIdTransactionsGet";
+      }
+
+      // verify the required parameter 'addressId' is set
+      if (addressId == undefined || addressId == null) {
+        throw "Missing the required parameter 'addressId' when calling accountsAccountIdAddressesAddressIdTransactionsGet";
+      }
 
 
       var pathParams = {
+        'account_id': accountId,
+        'address_id': addressId
       };
       var queryParams = {
       };
@@ -120,15 +148,22 @@
 
     /**
      * List addresses
-     * Lists addresses for an account.\n\n*Important*: Addresses should be considered one time use only.
+     * Lists addresses for an account.\n\n*Important*: Addresses should be considered one time use only.\n
+     * @param {String} accountId The account id
      * @param {module:api/AddressesApi~accountsAccountIdAddressesGetCallback} callback The callback function, accepting three arguments: error, data, response
      * data is of type: {module:model/InlineResponse2001}
      */
-    this.accountsAccountIdAddressesGet = function(callback) {
+    this.accountsAccountIdAddressesGet = function(accountId, callback) {
       var postBody = null;
+
+      // verify the required parameter 'accountId' is set
+      if (accountId == undefined || accountId == null) {
+        throw "Missing the required parameter 'accountId' when calling accountsAccountIdAddressesGet";
+      }
 
 
       var pathParams = {
+        'account_id': accountId
       };
       var queryParams = {
       };
@@ -159,18 +194,25 @@
 
     /**
      * Create address
-     * Creates a new address for an account. As all the arguments are optinal, it’s possible just to do a empty POST which will create a new address. This is handy if you need to create new receive addresses for an account on-demand.\n\n\nAddresses can be created for all account types. With fiat accounts, funds will be received with Instant Exchange.
+     * Creates a new address for an account. As all the arguments are optinal, it\u2019s possible just to do a empty POST which will create a new address. This is handy if you need to create new receive addresses for an account on-demand.\n\n\n\n\nAddresses can be created for all account types. With fiat accounts, funds will be received with Instant Exchange.\n
+     * @param {String} accountId The account id
      * @param {Object} opts Optional parameters
      * @param {module:model/AccountProperties2} opts.accountProperties Properties to update
      * @param {module:api/AddressesApi~accountsAccountIdAddressesPostCallback} callback The callback function, accepting three arguments: error, data, response
      * data is of type: {module:model/InlineResponse2011}
      */
-    this.accountsAccountIdAddressesPost = function(opts, callback) {
+    this.accountsAccountIdAddressesPost = function(accountId, opts, callback) {
       opts = opts || {};
       var postBody = opts['accountProperties'];
 
+      // verify the required parameter 'accountId' is set
+      if (accountId == undefined || accountId == null) {
+        throw "Missing the required parameter 'accountId' when calling accountsAccountIdAddressesPost";
+      }
+
 
       var pathParams = {
+        'account_id': accountId
       };
       var queryParams = {
       };
