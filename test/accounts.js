@@ -42,7 +42,7 @@ before(function(done) {
 
 describe('/accounts', function() {
   describe('get', function () {
-    it('should show the accounts', function (done) {
+    it('should retrieve a list of all the user\'s accounts', function (done) {
       accountsApi.accountsGet(function(error, data, response) {
         should.not.exist(error);
         response.statusCode.should.equal(200);
