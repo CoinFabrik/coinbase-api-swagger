@@ -16,6 +16,30 @@ function getSuccessChecker(properties, done) {
   };
 }
 
+var account1, account2;
+before(function(done) {
+  this.timeout(4000);
+  //create two accounts
+  accountsApi.accountsPost({
+    'accountProperties': {
+      name: 'account1'
+    }
+  }, function(error, data, response) {
+    should.not.exist(error);
+    account1 = data.data.id;
+    accountsApi.accountsPost({
+      'accountProperties': {
+        name: 'account2'
+      }
+    }, function(error, data) {
+      should.not.exist(error);
+      account2 = data.data.id;
+      console.log('Accounts: ' + account1 + ', ' + account2);
+      done();
+    });
+  });
+});
+
 describe('/accounts', function() {
   describe('get', function () {
     it('should show the accounts', function (done) {
@@ -42,29 +66,7 @@ describe('/accounts', function() {
 });
 
 describe('/accounts/{account_id}', function() {
-  var account1, account2;
-  before(function(done) {
-    this.timeout(4000);
-    //create two accounts
-    accountsApi.accountsPost({
-      'accountProperties': {
-        name: 'account1'
-      }
-    }, function(error, data, response) {
-      should.not.exist(error);
-      account1 = data.data.id;
-      accountsApi.accountsPost({
-        'accountProperties': {
-          name: 'account2'
-        }
-      }, function(error, data) {
-        should.not.exist(error);
-        account2 = data.data.id;
-        console.log('Accounts: ' + account1 + ', ' + account2);
-        done();
-      });
-    });
-  });
+
   describe('get', function () {
     it('should get the account', function (done) {
       accountsApi.accountsAccountIdGet(account1, getSuccessChecker(['currency', 'balance'], done));
@@ -90,6 +92,14 @@ describe('/accounts/{account_id}', function() {
         response.statusCode.should.equal(204);
         done();
       });
+    });
+  });
+});
+
+describe('/accounts/{account_id}/primary', function() {
+  describe('get', function () {
+    it('should get the account', function (done) {
+      accountsApi.accountsAccountIdPrimaryGet(account1, getSuccessChecker(['primary', 'currency', 'balance'], done));
     });
   });
 });
