@@ -7,16 +7,6 @@ CoinbaseApi.ApiClient.instance.authentications
 var addressesApi = new CoinbaseApi.AddressesApi(),
   accountsApi = new CoinbaseApi.AccountsApi();
 
-function getSuccessChecker(properties, done) {
-  return function(error, data, response) {
-    should.not.exist(error);
-    properties.forEach(p => {
-      should.exist(data.data[p]);
-    });
-    done();
-  };
-}
-
 var accountId, addressId;
 before(function(done) {
   this.timeout(8000);
@@ -46,5 +36,42 @@ describe('/accounts/{account_id}/addresses', function() {
         done();
       });
     });
+  });
+
+  describe('post', function() {
+    it('should create a new address for the acccount', function(done) {
+      addressesApi.accountsAccountIdAddressesPost(accountId, {}, function(error, data, response) {
+        response.statusCode.should.equal(201);
+        console.log(JSON.stringify(data.data));
+        should.exist(data.data.address);
+        addressId = data.data.id;
+        done();
+      });
+    });
+  })
+});
+
+describe('/accounts/{account_id}/addresses/{address_id}', function() {
+  describe('get', function() {
+    it('should get the address details', function(done) {
+      addressesApi.accountsAccountIdAddressesAddressIdGet(accountId, addressId, function(err, data) {
+        should.not.exist(err);
+        should.exist(data.data.address);
+        done();
+      })
+    })
+  });
+});
+
+describe('/accounts/{account_id}/addresses/{address_id}/transactions', function() {
+  describe('get', function() {
+    it('should get the address transactions', function(done) {
+      addressesApi.accountsAccountIdAddressesAddressIdTransactionsGet(accountId, addressId, function(err, data) {
+        should.not.exist(err);
+        should.exist(data.data);
+        data.data.should.be.an('array');
+        done();
+      })
+    })
   });
 });
