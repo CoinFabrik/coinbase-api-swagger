@@ -970,22 +970,22 @@
             "type": "object",
             "properties": {
                 "ending_before": {
-                    "type": "integer"
+                    "type": ["integer", "null"]
                 },
                 "starting_after": {
-                    "type": "integer"
+                    "type": ["integer", "null"]
                 },
                 "limit": {
-                    "type": "integer"
+                    "type": ["integer", "null"]
                 },
                 "order": {
-                    "type": "string"
+                    "type": ["string", "null"]
                 },
                 "previous_uri": {
-                    "type": "string"
+                    "type": ["string", "null"]
                 },
                 "next_uri": {
-                    "type": "string"
+                    "type": ["string", "null"]
                 }
             }
         },
