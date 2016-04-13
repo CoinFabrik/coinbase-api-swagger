@@ -4,7 +4,7 @@ var stt = require('swagger-test-templates'),
 var config = {
   assertionFormat: 'should',
   testModule: 'supertest',
-  pathName: Object.keys(swagger.paths),
+  pathName: [],//all paths
   maxLen: 80
 };
 //Fernando's User ID (sandbox) : "891ae771-ce5a-5014-801b-5461b5481e80"
