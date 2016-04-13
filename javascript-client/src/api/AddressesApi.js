@@ -194,7 +194,7 @@
 
     /**
      * Create address
-     * Creates a new address for an account. As all the arguments are optinal, it\u2019s possible just to do a empty POST which will create a new address. This is handy if you need to create new receive addresses for an account on-demand.\n\n\n\n\nAddresses can be created for all account types. With fiat accounts, funds will be received with Instant Exchange.\n
+     * Creates a new address for an account. As all the arguments are optinal, it\u2019s possible just to do a empty POST which will create a new address. This is handy if you need to create new receive addresses for an account on-demand.\nAddresses can be created for all account types. With fiat accounts, funds will be received with Instant Exchange.\n
      * @param {String} accountId The account id
      * @param {Object} opts Optional parameters
      * @param {module:model/AccountProperties2} opts.accountProperties Properties to update

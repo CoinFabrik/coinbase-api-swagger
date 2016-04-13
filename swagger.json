@@ -451,7 +451,7 @@
             },
             "post": {
                 "summary": "Create address",
-                "description": "Creates a new address for an account. As all the arguments are optinal, it’s possible just to do a empty POST which will create a new address. This is handy if you need to create new receive addresses for an account on-demand.\n\n\n\n\nAddresses can be created for all account types. With fiat accounts, funds will be received with Instant Exchange.\n",
+                "description": "Creates a new address for an account. As all the arguments are optinal, it’s possible just to do a empty POST which will create a new address. This is handy if you need to create new receive addresses for an account on-demand.\nAddresses can be created for all account types. With fiat accounts, funds will be received with Instant Exchange.\n",
                 "security": [
                     {
                         "coinbaseAccessCode": [
@@ -593,6 +593,283 @@
                                 }
                             }
                         }
+                    }
+                }
+            }
+        },
+        "/accounts/{account_id}/transactions": {
+            "get": {
+                "summary": "List transactions",
+                "description": "Lists account’s transactions. See Transaction resource for more information.",
+                "security": [
+                    {
+                        "coinbaseAccessCode": [
+                            "wallet:transactions:read"
+                        ]
+                    }
+                ],
+                "tags": [
+                    "Transactions"
+                ],
+                "parameters": [
+                    {
+                        "name": "account_id",
+                        "in": "path",
+                        "description": "The account id",
+                        "required": true,
+                        "type": "string"
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "The transactions",
+                        "schema": {
+                            "type": "object",
+                            "properties": {
+                                "pagination": {
+                                    "$ref": "#/definitions/Pagination"
+                                },
+                                "data": {
+                                    "type": "array",
+                                    "items": {
+                                        "$ref": "#/definitions/Transaction"
+                                    }
+                                }
+                            }
+                        }
+                    }
+                }
+            },
+            "post": {
+                "summary": "Send or request money",
+                "description": "Type=send\n=========\n\nSend funds to a bitcoin address or email address. No transaction fees are required for off blockchain transactions, and Coinbase waives fees for on-blockchain transactions greater than 0.0001 BTC, up to a threshold of 25 per day. Read more about free transactions.\n\nWhen used with OAuth2 authentication, this endpoint requires two factor authentication unless used with wallet:transactions:send:bypass-2fa scope.\n\nIf the user is able to buy bitcoin, they can send funds from their fiat account using instant exchange feature. Buy fees will be included in the created transaction and the recipient will receive the user defined amount.\n\nTo create a multisig transaction, visit Multisig documentation.\n\nType=request\n============\n\nRequests money from an email address.\n",
+                "security": [
+                    {
+                        "coinbaseAccessCode": [
+                            "wallet:transactions:send",
+                            "wallet:transactions:request"
+                        ]
+                    }
+                ],
+                "tags": [
+                    "Transactions"
+                ],
+                "parameters": [
+                    {
+                        "name": "account_id",
+                        "in": "path",
+                        "description": "The account id",
+                        "required": true,
+                        "type": "string"
+                    },
+                    {
+                        "in": "body",
+                        "name": "transaction_options",
+                        "required": true,
+                        "schema": {
+                            "type": "object",
+                            "properties": {
+                                "type": {
+                                    "type": "string",
+                                    "required": true,
+                                    "description": "Type should be \\\"send\\\" for sending money, or \\\"request\\\" for requesting money."
+                                },
+                                "to": {
+                                    "type": "string",
+                                    "required": true,
+                                    "description": "A bitcoin address (send only) or an email of the recipient (send or request)"
+                                },
+                                "amount": {
+                                    "type": "string",
+                                    "required": true,
+                                    "description": "Amount to be sent/requested."
+                                },
+                                "currency": {
+                                    "type": "string",
+                                    "required": true,
+                                    "description": "Currency for the amount"
+                                },
+                                "description": {
+                                    "type": "string",
+                                    "required": false,
+                                    "description": "Notes to be included in the email that the recipient receives"
+                                },
+                                "skip_notifications": {
+                                    "type": "boolean",
+                                    "required": false,
+                                    "description": "(Send only) Don’t send notification emails for small amounts (e.g. tips)"
+                                },
+                                "fee": {
+                                    "type": "string",
+                                    "required": false,
+                                    "description": "(Send only) Transaction fee in BTC if you would like to pay it. Coinbase pays transaction fees on payments greater than or equal to 0.0001 BTC. But for smaller amounts you may want to add your own amount. Fees can be added as a string, such as 0.0005"
+                                },
+                                "idem": {
+                                    "type": "string",
+                                    "required": false,
+                                    "description": "(Send only) A token to ensure idempotence. If a previous transaction with the same idem parameter already exists for this sender, that previous transaction will be returned and a new one will not be created. Max length 100 characters"
+                                }
+                            }
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "Success response (no content)"
+                    }
+                }
+            }
+        },
+        "/accounts/{account_id}/transactions/{transaction_id}": {
+            "get": {
+                "summary": "Show a transaction",
+                "description": "Show an individual transaction for an account. See Transaction resource for more information.",
+                "security": [
+                    {
+                        "coinbaseAccessCode": [
+                            "wallet:transactions:read"
+                        ]
+                    }
+                ],
+                "tags": [
+                    "Transactions"
+                ],
+                "parameters": [
+                    {
+                        "name": "account_id",
+                        "in": "path",
+                        "description": "The account id",
+                        "required": true,
+                        "type": "string"
+                    },
+                    {
+                        "name": "transaction_id",
+                        "in": "path",
+                        "description": "The transaction id",
+                        "required": true,
+                        "type": "string"
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "The requested transaction",
+                        "schema": {
+                            "type": "object",
+                            "properties": {
+                                "data": {
+                                    "$ref": "#/definitions/Transaction"
+                                }
+                            }
+                        }
+                    }
+                }
+            },
+            "delete": {
+                "summary": "Cancel request money",
+                "description": "Lets a user cancel a money request. Money requests can be canceled by the sender or the recipient.",
+                "security": [
+                    {
+                        "coinbaseAccessCode": [
+                            "wallet:transactions:request"
+                        ]
+                    }
+                ],
+                "tags": [
+                    "Transactions"
+                ],
+                "parameters": [
+                    {
+                        "name": "account_id",
+                        "in": "path",
+                        "description": "The account id",
+                        "required": true,
+                        "type": "string"
+                    },
+                    {
+                        "name": "transaction_id",
+                        "in": "path",
+                        "description": "The transaction id",
+                        "required": true,
+                        "type": "string"
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "Success response (no content)"
+                    }
+                }
+            }
+        },
+        "/accounts/{account_id}/transactions/{transaction_id}/complete": {
+            "post": {
+                "summary": "Complete request money",
+                "description": "Lets the recipient of a money request complete the request by sending money to the user who requested the money. This can only be completed by the user to whom the request was made, not the user who sent the request.",
+                "security": [
+                    {
+                        "coinbaseAccessCode": [
+                            "wallet:transactions:request"
+                        ]
+                    }
+                ],
+                "tags": [
+                    "Transactions"
+                ],
+                "parameters": [
+                    {
+                        "name": "account_id",
+                        "in": "path",
+                        "description": "The account id",
+                        "required": true,
+                        "type": "string"
+                    },
+                    {
+                        "name": "transaction_id",
+                        "in": "path",
+                        "description": "The transaction id",
+                        "required": true,
+                        "type": "string"
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "Success response (no content)"
+                    }
+                }
+            }
+        },
+        "/accounts/{account_id}/transactions/{transaction_id}/resend": {
+            "post": {
+                "summary": "Re-send request money",
+                "description": "Lets the user resend a money request. This will notify recipient with a new email.",
+                "security": [
+                    {
+                        "coinbaseAccessCode": [
+                            "wallet:transactions:request"
+                        ]
+                    }
+                ],
+                "tags": [
+                    "Transactions"
+                ],
+                "parameters": [
+                    {
+                        "name": "account_id",
+                        "in": "path",
+                        "description": "The account id",
+                        "required": true,
+                        "type": "string"
+                    },
+                    {
+                        "name": "transaction_id",
+                        "in": "path",
+                        "description": "The transaction id",
+                        "required": true,
+                        "type": "string"
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "Success response (no content)"
                     }
                 }
             }

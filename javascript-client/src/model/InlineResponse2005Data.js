@@ -10,20 +10,20 @@
     if (!root.CoinbaseApi) {
       root.CoinbaseApi = {};
     }
-    root.CoinbaseApi.InlineResponse2004Data = factory(root.CoinbaseApi.ApiClient);
+    root.CoinbaseApi.InlineResponse2005Data = factory(root.CoinbaseApi.ApiClient);
   }
 }(this, function(ApiClient) {
   'use strict';
 
   /**
-   * The InlineResponse2004Data model module.
-   * @module model/InlineResponse2004Data
+   * The InlineResponse2005Data model module.
+   * @module model/InlineResponse2005Data
    * @version 2.0.0
    */
 
   /**
-   * Constructs a new <code>InlineResponse2004Data</code>.
-   * @alias module:model/InlineResponse2004Data
+   * Constructs a new <code>InlineResponse2005Data</code>.
+   * @alias module:model/InlineResponse2005Data
    * @class
    */
   var exports = function() {
@@ -34,11 +34,11 @@
   };
 
   /**
-   * Constructs a <code>InlineResponse2004Data</code> from a plain JavaScript object, optionally creating a new instance.
+   * Constructs a <code>InlineResponse2005Data</code> from a plain JavaScript object, optionally creating a new instance.
    * Copies all relevant properties from <code>data</code> to <code>obj</code> if supplied or a new instance if not.
    * @param {Object} data The plain JavaScript object bearing properties of interest.
-   * @param {module:model/InlineResponse2004Data} obj Optional instance to populate.
-   * @return {module:model/InlineResponse2004Data} The populated <code>InlineResponse2004Data</code> instance.
+   * @param {module:model/InlineResponse2005Data} obj Optional instance to populate.
+   * @return {module:model/InlineResponse2005Data} The populated <code>InlineResponse2005Data</code> instance.
    */
   exports.constructFromObject = function(data, obj) {
     if (data) { 

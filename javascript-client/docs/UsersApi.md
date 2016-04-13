@@ -12,7 +12,7 @@ Method | HTTP request | Description
 
 <a name="userAuthGet"></a>
 # **userAuthGet**
-> InlineResponse2004 userAuthGet
+> InlineResponse2005 userAuthGet
 
 Show authorization information
 
@@ -44,7 +44,7 @@ This endpoint does not need any parameter.
 
 ### Return type
 
-[**InlineResponse2004**](InlineResponse2004.md)
+[**InlineResponse2005**](InlineResponse2005.md)
 
 ### Authorization
 
@@ -57,7 +57,7 @@ This endpoint does not need any parameter.
 
 <a name="userGet"></a>
 # **userGet**
-> InlineResponse2003 userGet
+> InlineResponse2004 userGet
 
 Show current user
 
@@ -89,7 +89,7 @@ This endpoint does not need any parameter.
 
 ### Return type
 
-[**InlineResponse2003**](InlineResponse2003.md)
+[**InlineResponse2004**](InlineResponse2004.md)
 
 ### Authorization
 
@@ -102,7 +102,7 @@ This endpoint does not need any parameter.
 
 <a name="userPut"></a>
 # **userPut**
-> InlineResponse2003 userPut(opts)
+> InlineResponse2004 userPut(opts)
 
 Update current user
 
@@ -141,7 +141,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-[**InlineResponse2003**](InlineResponse2003.md)
+[**InlineResponse2004**](InlineResponse2004.md)
 
 ### Authorization
 
@@ -154,7 +154,7 @@ Name | Type | Description  | Notes
 
 <a name="usersUserIdGet"></a>
 # **usersUserIdGet**
-> InlineResponse2003 usersUserIdGet(userId)
+> InlineResponse2004 usersUserIdGet(userId)
 
 Show a user
 
@@ -192,7 +192,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-[**InlineResponse2003**](InlineResponse2003.md)
+[**InlineResponse2004**](InlineResponse2004.md)
 
 ### Authorization
 
