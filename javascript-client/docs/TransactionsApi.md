@@ -65,7 +65,7 @@ Name | Type | Description  | Notes
 
 <a name="accountsAccountIdTransactionsPost"></a>
 # **accountsAccountIdTransactionsPost**
-> accountsAccountIdTransactionsPost(accountId, transactionOptions)
+> InlineResponse2012 accountsAccountIdTransactionsPost(accountId, transactionOptions)
 
 Send or request money
 
@@ -91,7 +91,7 @@ var callback = function(error, data, response) {
   if (error) {
     console.error(error);
   } else {
-    console.log('API called successfully.');
+    console.log('API called successfully. Returned data: ' + data);
   }
 };
 api.accountsAccountIdTransactionsPost(accountId, transactionOptions, callback);
@@ -106,7 +106,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-null (empty response body)
+[**InlineResponse2012**](InlineResponse2012.md)
 
 ### Authorization
 
@@ -227,7 +227,7 @@ null (empty response body)
 
 <a name="accountsAccountIdTransactionsTransactionIdGet"></a>
 # **accountsAccountIdTransactionsTransactionIdGet**
-> InlineResponse2003 accountsAccountIdTransactionsTransactionIdGet(accountId, transactionId)
+> InlineResponse2012 accountsAccountIdTransactionsTransactionIdGet(accountId, transactionId)
 
 Show a transaction
 
@@ -268,7 +268,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-[**InlineResponse2003**](InlineResponse2003.md)
+[**InlineResponse2012**](InlineResponse2012.md)
 
 ### Authorization
 

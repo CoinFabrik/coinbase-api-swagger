@@ -1,8 +1,8 @@
-# CoinbaseApi.InlineResponse2003
+# CoinbaseApi.InlineResponse2012
 
 ## Properties
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**data** | [**User**](User.md) |  | [optional] 
+**data** | [**Transaction**](Transaction.md) |  | [optional] 
 
 

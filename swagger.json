@@ -714,8 +714,16 @@
                     }
                 ],
                 "responses": {
-                    "200": {
-                        "description": "Success response (no content)"
+                    "201": {
+                        "description": "The pending transaction",
+                        "schema": {
+                            "type": "object",
+                            "properties": {
+                                "data": {
+                                    "$ref": "#/definitions/Transaction"
+                                }
+                            }
+                        }
                     }
                 }
             }

@@ -3,6 +3,6 @@
 ## Properties
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**data** | [**User**](User.md) |  | [optional] 
+**data** | [**InlineResponse2004Data**](InlineResponse2004Data.md) |  | [optional] 
 
 

@@ -1,18 +1,18 @@
 (function(root, factory) {
   if (typeof define === 'function' && define.amd) {
     // AMD. Register as an anonymous module.
-    define(['../ApiClient', './Transaction'], factory);
+    define(['../ApiClient', './User'], factory);
   } else if (typeof module === 'object' && module.exports) {
     // CommonJS-like environments that support module.exports, like Node.
-    module.exports = factory(require('../ApiClient'), require('./Transaction'));
+    module.exports = factory(require('../ApiClient'), require('./User'));
   } else {
     // Browser globals (root is window)
     if (!root.CoinbaseApi) {
       root.CoinbaseApi = {};
     }
-    root.CoinbaseApi.InlineResponse2003 = factory(root.CoinbaseApi.ApiClient, root.CoinbaseApi.Transaction);
+    root.CoinbaseApi.InlineResponse2003 = factory(root.CoinbaseApi.ApiClient, root.CoinbaseApi.User);
   }
-}(this, function(ApiClient, Transaction) {
+}(this, function(ApiClient, User) {
   'use strict';
 
   /**
@@ -43,7 +43,7 @@
       obj = obj || new exports();
 
       if (data.hasOwnProperty('data')) {
-        obj['data'] = Transaction.constructFromObject(data['data']);
+        obj['data'] = User.constructFromObject(data['data']);
       }
     }
     return obj;
@@ -51,7 +51,7 @@
 
 
   /**
-   * @member {module:model/Transaction} data
+   * @member {module:model/User} data
    */
   exports.prototype['data'] = undefined;
 

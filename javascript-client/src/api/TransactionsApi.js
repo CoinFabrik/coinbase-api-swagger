@@ -1,18 +1,18 @@
 (function(root, factory) {
   if (typeof define === 'function' && define.amd) {
     // AMD. Register as an anonymous module.
-    define(['../ApiClient', '../model/InlineResponse2002', '../model/TransactionOptions', '../model/InlineResponse2003'], factory);
+    define(['../ApiClient', '../model/InlineResponse2002', '../model/TransactionOptions', '../model/InlineResponse2012'], factory);
   } else if (typeof module === 'object' && module.exports) {
     // CommonJS-like environments that support module.exports, like Node.
-    module.exports = factory(require('../ApiClient'), require('../model/InlineResponse2002'), require('../model/TransactionOptions'), require('../model/InlineResponse2003'));
+    module.exports = factory(require('../ApiClient'), require('../model/InlineResponse2002'), require('../model/TransactionOptions'), require('../model/InlineResponse2012'));
   } else {
     // Browser globals (root is window)
     if (!root.CoinbaseApi) {
       root.CoinbaseApi = {};
     }
-    root.CoinbaseApi.TransactionsApi = factory(root.CoinbaseApi.ApiClient, root.CoinbaseApi.InlineResponse2002, root.CoinbaseApi.TransactionOptions, root.CoinbaseApi.InlineResponse2003);
+    root.CoinbaseApi.TransactionsApi = factory(root.CoinbaseApi.ApiClient, root.CoinbaseApi.InlineResponse2002, root.CoinbaseApi.TransactionOptions, root.CoinbaseApi.InlineResponse2012);
   }
-}(this, function(ApiClient, InlineResponse2002, TransactionOptions, InlineResponse2003) {
+}(this, function(ApiClient, InlineResponse2002, TransactionOptions, InlineResponse2012) {
   'use strict';
 
   /**
@@ -82,7 +82,7 @@
      * Callback function to receive the result of the accountsAccountIdTransactionsPost operation.
      * @callback module:api/TransactionsApi~accountsAccountIdTransactionsPostCallback
      * @param {String} error Error message, if any.
-     * @param data This operation does not return a value.
+     * @param {module:model/InlineResponse2012} data The data returned by the service call.
      * @param {String} response The complete HTTP response.
      */
 
@@ -92,6 +92,7 @@
      * @param {String} accountId The account id
      * @param {module:model/TransactionOptions} transactionOptions 
      * @param {module:api/TransactionsApi~accountsAccountIdTransactionsPostCallback} callback The callback function, accepting three arguments: error, data, response
+     * data is of type: {module:model/InlineResponse2012}
      */
     this.accountsAccountIdTransactionsPost = function(accountId, transactionOptions, callback) {
       var postBody = transactionOptions;
@@ -120,7 +121,7 @@
       var authNames = ['coinbaseAccessCode'];
       var contentTypes = [];
       var accepts = ['application/json'];
-      var returnType = null;
+      var returnType = InlineResponse2012;
 
       return this.apiClient.callApi(
         '/accounts/{account_id}/transactions', 'POST',
@@ -237,7 +238,7 @@
      * Callback function to receive the result of the accountsAccountIdTransactionsTransactionIdGet operation.
      * @callback module:api/TransactionsApi~accountsAccountIdTransactionsTransactionIdGetCallback
      * @param {String} error Error message, if any.
-     * @param {module:model/InlineResponse2003} data The data returned by the service call.
+     * @param {module:model/InlineResponse2012} data The data returned by the service call.
      * @param {String} response The complete HTTP response.
      */
 
@@ -247,7 +248,7 @@
      * @param {String} accountId The account id
      * @param {String} transactionId The transaction id
      * @param {module:api/TransactionsApi~accountsAccountIdTransactionsTransactionIdGetCallback} callback The callback function, accepting three arguments: error, data, response
-     * data is of type: {module:model/InlineResponse2003}
+     * data is of type: {module:model/InlineResponse2012}
      */
     this.accountsAccountIdTransactionsTransactionIdGet = function(accountId, transactionId, callback) {
       var postBody = null;
@@ -277,7 +278,7 @@
       var authNames = ['coinbaseAccessCode'];
       var contentTypes = [];
       var accepts = ['application/json'];
-      var returnType = InlineResponse2003;
+      var returnType = InlineResponse2012;
 
       return this.apiClient.callApi(
         '/accounts/{account_id}/transactions/{transaction_id}', 'GET',

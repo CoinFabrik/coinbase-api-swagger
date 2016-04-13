@@ -1,4 +1,4 @@
-# CoinbaseApi.InlineResponse2005Data
+# CoinbaseApi.InlineResponse2004Data
 
 ## Properties
 Name | Type | Description | Notes

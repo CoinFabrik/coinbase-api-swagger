@@ -1,18 +1,18 @@
 (function(root, factory) {
   if (typeof define === 'function' && define.amd) {
     // AMD. Register as an anonymous module.
-    define(['../ApiClient', './User'], factory);
+    define(['../ApiClient', './InlineResponse2004Data'], factory);
   } else if (typeof module === 'object' && module.exports) {
     // CommonJS-like environments that support module.exports, like Node.
-    module.exports = factory(require('../ApiClient'), require('./User'));
+    module.exports = factory(require('../ApiClient'), require('./InlineResponse2004Data'));
   } else {
     // Browser globals (root is window)
     if (!root.CoinbaseApi) {
       root.CoinbaseApi = {};
     }
-    root.CoinbaseApi.InlineResponse2004 = factory(root.CoinbaseApi.ApiClient, root.CoinbaseApi.User);
+    root.CoinbaseApi.InlineResponse2004 = factory(root.CoinbaseApi.ApiClient, root.CoinbaseApi.InlineResponse2004Data);
   }
-}(this, function(ApiClient, User) {
+}(this, function(ApiClient, InlineResponse2004Data) {
   'use strict';
 
   /**
@@ -43,7 +43,7 @@
       obj = obj || new exports();
 
       if (data.hasOwnProperty('data')) {
-        obj['data'] = User.constructFromObject(data['data']);
+        obj['data'] = InlineResponse2004Data.constructFromObject(data['data']);
       }
     }
     return obj;
@@ -51,7 +51,7 @@
 
 
   /**
-   * @member {module:model/User} data
+   * @member {module:model/InlineResponse2004Data} data
    */
   exports.prototype['data'] = undefined;
 
