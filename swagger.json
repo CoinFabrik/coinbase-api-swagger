@@ -3,7 +3,11 @@
     "info": {
         "title": "Coinbase API",
         "description": "The Coinbase v2 API",
-        "version": "2.0.0"
+        "version": "2.0.0",
+        "contact": {
+            "name": "CoinFabrik",
+            "url": "http://www.coinfabrik.com/"
+        }
     },
     "host": "api.sandbox.coinbase.com",
     "schemes": [
