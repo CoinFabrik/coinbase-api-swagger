@@ -14,7 +14,7 @@ before(function(done) {
     response.statusCode.should.equal(200);
     data.data.should.be.an('array');
     accountId = data.data[0].id;
-
+    console.log('Addresses test account: ' + accountId);
     addressesApi.accountsAccountIdAddressesPost(accountId, {}, function(error, data, response) {
       response.statusCode.should.equal(201);
       console.log(JSON.stringify(data.data));
