@@ -1,9 +1,6 @@
 var CoinbaseApi = require('../../javascript-client/src'),
   should = require('chai').should();
 
-CoinbaseApi.ApiClient.instance.authentications
-  .coinbaseAccessCode.accessToken = require('../../config').accessToken;
-
 var usersApi = new CoinbaseApi.UsersApi();
 
 function getSuccessChecker(properties, done) {

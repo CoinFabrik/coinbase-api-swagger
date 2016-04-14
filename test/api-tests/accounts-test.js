@@ -4,10 +4,10 @@ var ZSchema = require('z-schema');
 var validator = new ZSchema({});
 var supertest = require('supertest');
 var api = supertest('https://api.sandbox.coinbase.com'); // supertest init;
-var swagger = require('../swagger.json');
+var swagger = require('../../swagger.json');
 chai.should();
 
-require('dotenv').load();
+
 
 describe('/accounts', function() {
   describe('get', function() {

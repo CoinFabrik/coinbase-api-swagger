@@ -1,8 +1,6 @@
 var CoinbaseApi = require('../../javascript-client/src'),
-  should = require('chai').should();
-
-CoinbaseApi.ApiClient.instance.authentications
-  .coinbaseAccessCode.accessToken = require('../../config').accessToken;
+  should = require('chai').should(),
+  ids = require('../id-pool');
 
 var accountsApi = new CoinbaseApi.AccountsApi();
 
@@ -15,30 +13,6 @@ function getSuccessChecker(properties, done) {
     done();
   };
 }
-
-var account1, account2;
-before(function(done) {
-  this.timeout(4000);
-  //create two accounts
-  accountsApi.accountsPost({
-    'accountProperties': {
-      name: 'account1'
-    }
-  }, function(error, data, response) {
-    should.not.exist(error);
-    account1 = data.data.id;
-    accountsApi.accountsPost({
-      'accountProperties': {
-        name: 'account2'
-      }
-    }, function(error, data) {
-      should.not.exist(error);
-      account2 = data.data.id;
-      console.log('Accounts: ' + account1 + ', ' + account2);
-      done();
-    });
-  });
-});
 
 describe('/accounts', function() {
   describe('get', function () {
@@ -56,20 +30,22 @@ describe('/accounts', function() {
     var opts = {
       'accountProperties': {
         name: 'asdf'
-      } // {AccountProperties} Account properties
+      }
     };
     it('should create a new account', function (done) {
       accountsApi.accountsPost(opts, getSuccessChecker(['primary', 'type', 'currency'], done));
     });
+    after(function() {
+      //todo: delete account
+    })
   });
 
 });
 
 describe('/accounts/{account_id}', function() {
-
   describe('get', function () {
     it('should get the account', function (done) {
-      accountsApi.accountsAccountIdGet(account1, getSuccessChecker(['currency', 'balance'], done));
+      accountsApi.accountsAccountIdGet(ids.account, getSuccessChecker(['currency', 'balance'], done));
     });
   });
   describe('put', function () {
@@ -80,15 +56,28 @@ describe('/accounts/{account_id}', function() {
         }
       };
       accountsApi.accountsAccountIdPut(
-        account1,
+        ids.account,
         opts,
         getSuccessChecker(['currency', 'balance'], done)
       );
     });
   });
   describe('delete', function () {
+    var accountToDelete;
+    before(function(done) {
+      //create the account to be deleted
+      accountsApi.accountsPost({
+        accountProperties: {
+          name: 'asdf'
+        }
+      }, function(err, data, response) {
+        should.not.exist(err);
+        accountToDelete = data.data.id;
+        done();
+      });
+    });
     it('should delete an account', function (done) {
-      accountsApi.accountsAccountIdDelete(account2, function (err, data, response) {
+      accountsApi.accountsAccountIdDelete(accountToDelete, function (err, data, response) {
         response.statusCode.should.equal(204);
         done();
       });
@@ -98,8 +87,8 @@ describe('/accounts/{account_id}', function() {
 
 describe('/accounts/{account_id}/primary', function() {
   describe('get', function () {
-    it('should get the account', function (done) {
-      accountsApi.accountsAccountIdPrimaryGet(account1, getSuccessChecker(['primary', 'currency', 'balance'], done));
+    it('should set the account as primary', function (done) {
+      accountsApi.accountsAccountIdPrimaryGet(ids.account, getSuccessChecker(['primary', 'currency', 'balance'], done));
     });
   });
 });

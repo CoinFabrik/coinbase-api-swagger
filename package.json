@@ -4,7 +4,7 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "test": "node run-tests"
+    "test": "./node_modules/.bin/_mocha"
   },
   "author": "Fernando D. Tiberti",
   "license": "ISC",
