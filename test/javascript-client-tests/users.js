@@ -1,4 +1,4 @@
-var CoinbaseApi = require('../javascript-client/src'),
+var CoinbaseApi = require('../../javascript-client/src'),
   should = require('chai').should();
 
 CoinbaseApi.ApiClient.instance.authentications
