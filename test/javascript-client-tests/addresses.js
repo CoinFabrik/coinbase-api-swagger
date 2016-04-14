@@ -2,7 +2,7 @@ var CoinbaseApi = require('../../javascript-client/src'),
   should = require('chai').should();
 
 CoinbaseApi.ApiClient.instance.authentications
-  .coinbaseAccessCode.accessToken = require('../config').accessToken;
+  .coinbaseAccessCode.accessToken = require('../../config').accessToken;
 
 var addressesApi = new CoinbaseApi.AddressesApi(),
   accountsApi = new CoinbaseApi.AccountsApi();
