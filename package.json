@@ -11,6 +11,7 @@
   "dependencies": {
     "chai": "^3.5.0",
     "dotenv": "^2.0.0",
+    "json-schema-deref": "^0.3.0",
     "mocha": "^2.4.5",
     "supertest": "^1.2.0",
     "swagger-test-templates": "^1.2.0",
