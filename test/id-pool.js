@@ -1,7 +1,8 @@
 //These get assigned in mocha-hooks.js
 
 module.exports = {
-  account: null,
-  address: null,
-  transaction: null
+  account_id: null,
+  address_id: null,
+  transaction_id: null,
+  user_id: null
 };
