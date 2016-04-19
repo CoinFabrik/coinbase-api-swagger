@@ -58,7 +58,7 @@ Name | Type | Description  | Notes
 
 [coinbaseAccessCode](../README.md#coinbaseAccessCode)
 
-### HTTP reuqest headers
+### HTTP request headers
 
  - **Content-Type**: Not defined
  - **Accept**: application/json
@@ -69,7 +69,7 @@ Name | Type | Description  | Notes
 
 Send or request money
 
-Type&#x3D;send\n&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;\n\nSend funds to a bitcoin address or email address. No transaction fees are required for off blockchain transactions, and Coinbase waives fees for on-blockchain transactions greater than 0.0001 BTC, up to a threshold of 25 per day. Read more about free transactions.\n\nWhen used with OAuth2 authentication, this endpoint requires two factor authentication unless used with wallet:transactions:send:bypass-2fa scope.\n\nIf the user is able to buy bitcoin, they can send funds from their fiat account using instant exchange feature. Buy fees will be included in the created transaction and the recipient will receive the user defined amount.\n\nTo create a multisig transaction, visit Multisig documentation.\n\nType&#x3D;request\n&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;\n\nRequests money from an email address.\n
+Type&#x3D;send\n&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;\n\n\nSend funds to a bitcoin address or email address. No transaction fees are required for off blockchain transactions, and Coinbase waives fees for on-blockchain transactions greater than 0.0001 BTC, up to a threshold of 25 per day. Read more about free transactions.\n\n\nWhen used with OAuth2 authentication, this endpoint requires two factor authentication unless used with wallet:transactions:send:bypass-2fa scope.\n\n\nIf the user is able to buy bitcoin, they can send funds from their fiat account using instant exchange feature. Buy fees will be included in the created transaction and the recipient will receive the user defined amount.\n\n\nTo create a multisig transaction, visit Multisig documentation.\n\n\nType&#x3D;request\n&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;\n\n\nRequests money from an email address.\n
 
 ### Example
 ```javascript
@@ -112,7 +112,7 @@ Name | Type | Description  | Notes
 
 [coinbaseAccessCode](../README.md#coinbaseAccessCode)
 
-### HTTP reuqest headers
+### HTTP request headers
 
  - **Content-Type**: Not defined
  - **Accept**: application/json
@@ -166,7 +166,7 @@ null (empty response body)
 
 [coinbaseAccessCode](../README.md#coinbaseAccessCode)
 
-### HTTP reuqest headers
+### HTTP request headers
 
  - **Content-Type**: Not defined
  - **Accept**: application/json
@@ -220,7 +220,7 @@ null (empty response body)
 
 [coinbaseAccessCode](../README.md#coinbaseAccessCode)
 
-### HTTP reuqest headers
+### HTTP request headers
 
  - **Content-Type**: Not defined
  - **Accept**: application/json
@@ -274,7 +274,7 @@ Name | Type | Description  | Notes
 
 [coinbaseAccessCode](../README.md#coinbaseAccessCode)
 
-### HTTP reuqest headers
+### HTTP request headers
 
  - **Content-Type**: Not defined
  - **Accept**: application/json
@@ -328,7 +328,7 @@ null (empty response body)
 
 [coinbaseAccessCode](../README.md#coinbaseAccessCode)
 
-### HTTP reuqest headers
+### HTTP request headers
 
  - **Content-Type**: Not defined
  - **Accept**: application/json

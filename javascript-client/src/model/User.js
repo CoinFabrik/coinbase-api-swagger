@@ -25,18 +25,17 @@
    * Constructs a new <code>User</code>.
    * @alias module:model/User
    * @class
+   * @param id
+   * @param avatarUrl
+   * @param resource
+   * @param resourcePath
    */
-  var exports = function() {
+  var exports = function(id, avatarUrl, resource, resourcePath) {
 
-
-
-
-
-
-
-
-
-
+    this['id'] = id;
+    this['avatar_url'] = avatarUrl;
+    this['resource'] = resource;
+    this['resource_path'] = resourcePath;
   };
 
   /**
@@ -52,21 +51,6 @@
 
       if (data.hasOwnProperty('id')) {
         obj['id'] = ApiClient.convertToType(data['id'], 'String');
-      }
-      if (data.hasOwnProperty('name')) {
-        obj['name'] = ApiClient.convertToType(data['name'], 'String');
-      }
-      if (data.hasOwnProperty('username')) {
-        obj['username'] = ApiClient.convertToType(data['username'], 'String');
-      }
-      if (data.hasOwnProperty('profile_location')) {
-        obj['profile_location'] = ApiClient.convertToType(data['profile_location'], 'String');
-      }
-      if (data.hasOwnProperty('profile_bio')) {
-        obj['profile_bio'] = ApiClient.convertToType(data['profile_bio'], 'String');
-      }
-      if (data.hasOwnProperty('profile_url')) {
-        obj['profile_url'] = ApiClient.convertToType(data['profile_url'], 'String');
       }
       if (data.hasOwnProperty('avatar_url')) {
         obj['avatar_url'] = ApiClient.convertToType(data['avatar_url'], 'String');
@@ -87,35 +71,6 @@
    * @member {String} id
    */
   exports.prototype['id'] = undefined;
-
-  /**
-   * User\u2019s public name
-   * @member {String} name
-   */
-  exports.prototype['name'] = undefined;
-
-  /**
-   * @member {String} username
-   */
-  exports.prototype['username'] = undefined;
-
-  /**
-   * Location for user\u2019s public profile
-   * @member {String} profile_location
-   */
-  exports.prototype['profile_location'] = undefined;
-
-  /**
-   * Bio for user\u2019s public profile
-   * @member {String} profile_bio
-   */
-  exports.prototype['profile_bio'] = undefined;
-
-  /**
-   * Public profile location if user has one
-   * @member {String} profile_url
-   */
-  exports.prototype['profile_url'] = undefined;
 
   /**
    * User\u2019s avatar url

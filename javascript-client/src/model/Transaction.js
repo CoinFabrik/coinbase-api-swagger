@@ -40,11 +40,6 @@
 
 
 
-
-
-
-
-
   };
 
   /**
@@ -93,21 +88,6 @@
       }
       if (data.hasOwnProperty('details')) {
         obj['details'] = ApiClient.convertToType(data['details'], Object);
-      }
-      if (data.hasOwnProperty('network')) {
-        obj['network'] = ApiClient.convertToType(data['network'], Object);
-      }
-      if (data.hasOwnProperty('to')) {
-        obj['to'] = ApiClient.convertToType(data['to'], Object);
-      }
-      if (data.hasOwnProperty('from')) {
-        obj['from'] = ApiClient.convertToType(data['from'], Object);
-      }
-      if (data.hasOwnProperty('address')) {
-        obj['address'] = ApiClient.convertToType(data['address'], Object);
-      }
-      if (data.hasOwnProperty('application')) {
-        obj['application'] = ApiClient.convertToType(data['application'], Object);
       }
     }
     return obj;
@@ -182,36 +162,6 @@
    * @member {Object} details
    */
   exports.prototype['details'] = undefined;
-
-  /**
-   * Information about bitcoin network including network transaction hash if transaction was on-blockchain. Only available for certain types of transactions
-   * @member {Object} network
-   */
-  exports.prototype['network'] = undefined;
-
-  /**
-   * The receiving party of a debit transaction. Usually another resource but can also be another type like email. Only available for certain types of transactions
-   * @member {Object} to
-   */
-  exports.prototype['to'] = undefined;
-
-  /**
-   * The originating party of a credit transaction. Usually another resource but can also be another type like bitcoin network. Only available for certain types of transactions
-   * @member {Object} from
-   */
-  exports.prototype['from'] = undefined;
-
-  /**
-   * Associated bitcoin address for received payment
-   * @member {Object} address
-   */
-  exports.prototype['address'] = undefined;
-
-  /**
-   * Associated OAuth2 application
-   * @member {Object} application
-   */
-  exports.prototype['application'] = undefined;
 
 
 

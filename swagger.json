@@ -930,28 +930,29 @@
     "definitions": {
         "User": {
             "type": "object",
+            "required" : ["id", "avatar_url", "resource", "resource_path"],
             "properties": {
                 "id": {
                     "type": "string",
                     "description": "Resource ID"
                 },
                 "name": {
-                    "type": "string",
+                    "type": ["string", "null"],
                     "description": "User’s public name"
                 },
                 "username": {
-                    "type": "string"
+                    "type": ["string", "null"]
                 },
                 "profile_location": {
-                    "type": "string",
+                    "type": ["string", "null"],
                     "description": "Location for user’s public profile"
                 },
                 "profile_bio": {
-                    "type": "string",
+                    "type": ["string", "null"],
                     "description": "Bio for user’s public profile"
                 },
                 "profile_url": {
-                    "type": "string",
+                    "type": ["string", "null"],
                     "description": "Public profile location if user has one"
                 },
                 "avatar_url": {
@@ -1058,7 +1059,7 @@
                     "description": "Bitcoin address"
                 },
                 "name": {
-                    "type": "string",
+                    "type": ["string", "null"],
                     "description": "User defined label for the address"
                 },
                 "created_at": {
@@ -1127,23 +1128,23 @@
                     "description": "Detailed information about the transaction"
                 },
                 "network": {
-                    "type": "object",
+                    "type": ["object", "null"],
                     "description": "Information about bitcoin network including network transaction hash if transaction was on-blockchain. Only available for certain types of transactions"
                 },
                 "to": {
-                    "type": "object",
+                    "type": ["object", "null"],
                     "description": "The receiving party of a debit transaction. Usually another resource but can also be another type like email. Only available for certain types of transactions"
                 },
                 "from": {
-                    "type": "object",
+                    "type": ["object", "null"],
                     "description": "The originating party of a credit transaction. Usually another resource but can also be another type like bitcoin network. Only available for certain types of transactions"
                 },
                 "address": {
-                    "type": "object",
+                    "type": ["object", "null"],
                     "description": "Associated bitcoin address for received payment"
                 },
                 "application": {
-                    "type": "object",
+                    "type": ["object", "null"],
                     "description": "Associated OAuth2 application"
                 }
             }

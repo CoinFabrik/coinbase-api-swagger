@@ -34,7 +34,6 @@
 
 
 
-
   };
 
   /**
@@ -53,9 +52,6 @@
       }
       if (data.hasOwnProperty('address')) {
         obj['address'] = ApiClient.convertToType(data['address'], 'String');
-      }
-      if (data.hasOwnProperty('name')) {
-        obj['name'] = ApiClient.convertToType(data['name'], 'String');
       }
       if (data.hasOwnProperty('created_at')) {
         obj['created_at'] = ApiClient.convertToType(data['created_at'], 'String');
@@ -85,12 +81,6 @@
    * @member {String} address
    */
   exports.prototype['address'] = undefined;
-
-  /**
-   * User defined label for the address
-   * @member {String} name
-   */
-  exports.prototype['name'] = undefined;
 
   /**
    * Timestamp indicating when was the address was created.

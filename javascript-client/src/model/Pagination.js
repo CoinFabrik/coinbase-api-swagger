@@ -28,12 +28,6 @@
    */
   var exports = function() {
 
-
-
-
-
-
-
   };
 
   /**
@@ -47,58 +41,10 @@
     if (data) { 
       obj = obj || new exports();
 
-      if (data.hasOwnProperty('ending_before')) {
-        obj['ending_before'] = ApiClient.convertToType(data['ending_before'], 'Integer');
-      }
-      if (data.hasOwnProperty('starting_after')) {
-        obj['starting_after'] = ApiClient.convertToType(data['starting_after'], 'Integer');
-      }
-      if (data.hasOwnProperty('limit')) {
-        obj['limit'] = ApiClient.convertToType(data['limit'], 'Integer');
-      }
-      if (data.hasOwnProperty('order')) {
-        obj['order'] = ApiClient.convertToType(data['order'], 'String');
-      }
-      if (data.hasOwnProperty('previous_uri')) {
-        obj['previous_uri'] = ApiClient.convertToType(data['previous_uri'], 'String');
-      }
-      if (data.hasOwnProperty('next_uri')) {
-        obj['next_uri'] = ApiClient.convertToType(data['next_uri'], 'String');
-      }
     }
     return obj;
   }
 
-
-  /**
-   * @member {Integer} ending_before
-   */
-  exports.prototype['ending_before'] = undefined;
-
-  /**
-   * @member {Integer} starting_after
-   */
-  exports.prototype['starting_after'] = undefined;
-
-  /**
-   * @member {Integer} limit
-   */
-  exports.prototype['limit'] = undefined;
-
-  /**
-   * @member {String} order
-   */
-  exports.prototype['order'] = undefined;
-
-  /**
-   * @member {String} previous_uri
-   */
-  exports.prototype['previous_uri'] = undefined;
-
-  /**
-   * @member {String} next_uri
-   */
-  exports.prototype['next_uri'] = undefined;
 
 
 

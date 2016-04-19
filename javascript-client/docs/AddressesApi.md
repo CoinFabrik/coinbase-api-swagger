@@ -59,7 +59,7 @@ Name | Type | Description  | Notes
 
 [coinbaseAccessCode](../README.md#coinbaseAccessCode)
 
-### HTTP reuqest headers
+### HTTP request headers
 
  - **Content-Type**: Not defined
  - **Accept**: application/json
@@ -113,7 +113,7 @@ Name | Type | Description  | Notes
 
 [coinbaseAccessCode](../README.md#coinbaseAccessCode)
 
-### HTTP reuqest headers
+### HTTP request headers
 
  - **Content-Type**: Not defined
  - **Accept**: application/json
@@ -164,7 +164,7 @@ Name | Type | Description  | Notes
 
 [coinbaseAccessCode](../README.md#coinbaseAccessCode)
 
-### HTTP reuqest headers
+### HTTP request headers
 
  - **Content-Type**: Not defined
  - **Accept**: application/json
@@ -219,7 +219,7 @@ Name | Type | Description  | Notes
 
 [coinbaseAccessCode](../README.md#coinbaseAccessCode)
 
-### HTTP reuqest headers
+### HTTP request headers
 
  - **Content-Type**: Not defined
  - **Accept**: application/json
