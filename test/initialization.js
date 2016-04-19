@@ -1,6 +1,6 @@
 var CoinbaseApi = require('../javascript-client/src'),
   should = require('chai').should(),
-  ids = require('./id-pool');
+  params = require('./param-pool');
 
 require('dotenv').load();
 
@@ -29,20 +29,21 @@ before(function(done) {
     }
   }, function(error, data) {
     should.not.exist(error);
-    ids.account_id = data.data.id;
-    addressesApi.accountsAccountIdAddressesPost(ids.account, {}, function(error, data, response) {
-      should.not.exist(error);
-      response.statusCode.should.equal(201);
-      should.exist(data.data.address);
-      ids.address_id = data.data.id;
-      taskDone();
-    });
+    params.set('account_id', data.data.id);
+    addressesApi.accountsAccountIdAddressesPost(params.get('account_id'), {},
+      function(error, data, response) {
+        should.not.exist(error);
+        response.statusCode.should.equal(201);
+        should.exist(data.data.address);
+        params.set('address_id', data.data.id);
+        taskDone();
+      });
   });
 
   usersApi.userGet(function(err, data) {
     should.not.exist(err);
     should.exist(data.data.id);
-    ids.user_id = data.data.id;
+    params.set('user_id', data.data.id);
     taskDone();
   });
 

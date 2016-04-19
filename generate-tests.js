@@ -2,6 +2,21 @@ var stt = require('swagger-test-templates'),
   fs = require('fs'),
   deref = require('json-schema-deref');
 
+function replaceParamsPlaceholders(file) {
+  var index = file.indexOf(' PARAM GOES HERE}');
+  while(index !== -1) {
+    var paramName = [], i;
+    for (i = index - 1; file[i] !== '{'; i--) {
+      paramName.unshift(file[i]);
+    }
+    paramName = paramName.join('');
+    file = file.slice(0, i) +
+      '\' + require(\'../param-pool\').get(\'' + paramName + '\') + \'' +
+      file.slice(index + 17);
+    index = file.indexOf(' PARAM GOES HERE}');
+  }
+  return file;
+}
 
 var config = {
   assertionFormat: 'should',
@@ -19,7 +34,9 @@ deref(require('./swagger.json'), function(err, fullSchema) {
   var files = stt.testGen(fullSchema, config);
   console.log(files);
   files.forEach(file => {
+    file.test = replaceParamsPlaceholders(file.test);
     fs.writeFileSync('./built-tests/' + file.name, file.test);
   });
 });
 
+exports.replaceParamsPlaceholders = replaceParamsPlaceholders;
