@@ -1,8 +1,10 @@
 var CoinbaseApi = require('./javascript-client/src'),
   should = require('chai').should();
 
+require('dotenv').load();
+
 CoinbaseApi.ApiClient.instance.authentications
-  .coinbaseAccessCode.accessToken = require('./config').accessToken;
+  .coinbaseAccessCode.accessToken = process.env.COINBASE_ACCESS_CODE;
 
 var accountsApi = new CoinbaseApi.AccountsApi();
 
