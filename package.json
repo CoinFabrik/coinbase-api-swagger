@@ -10,7 +10,10 @@
   "license": "ISC",
   "dependencies": {
     "chai": "^3.5.0",
+    "dotenv": "^2.0.0",
     "mocha": "^2.4.5",
+    "supertest": "^1.2.0",
+    "swagger-test-templates": "^1.2.0",
     "z-schema": "^3.16.1"
   }
 }
