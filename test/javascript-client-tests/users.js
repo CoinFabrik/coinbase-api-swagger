@@ -17,7 +17,7 @@ function getSuccessChecker(properties, done) {
 describe('/user', function() {
   describe('get', function () {
     it('should respond with the current user', function (done) {
-      usersApi.userGet(getSuccessChecker(['username'], done));
+      usersApi.userGet(getSuccessChecker(['avatar_url'], done));
     });
   });
 
@@ -61,7 +61,7 @@ describe('/user/auth', function() {
 describe('/user/{user_id}', function() {
   describe('get', function () {
     it('should show the user', function (done) {
-      usersApi.usersUserIdGet('891ae771-ce5a-5014-801b-5461b5481e80', getSuccessChecker(['username'], done));
+      usersApi.usersUserIdGet('891ae771-ce5a-5014-801b-5461b5481e80', getSuccessChecker(['avatar_url'], done));
     });
   });
 });
