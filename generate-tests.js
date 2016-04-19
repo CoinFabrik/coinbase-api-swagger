@@ -14,5 +14,5 @@ var config = {
 var files = stt.testGen(swagger, config);
 console.log(files);
 files.forEach(file => {
-  fs.writeFileSync('./test/built-tests/' + file.name, file.test);
+  fs.writeFileSync('./built-tests/' + file.name, file.test);
 });
