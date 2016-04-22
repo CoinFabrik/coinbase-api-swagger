@@ -29,7 +29,7 @@ function generate() {
     });
     files.forEach(file => {
       file.test = replaceParamsPlaceholders(file.test);
-      fs.writeFileSync('./built-tests/' + file.name, file.test);
+      fs.writeFileSync('./test/built-tests/' + file.name, file.test);
     });
   });
 }

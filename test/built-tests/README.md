@@ -1,0 +1,1 @@
+In this directory new tests templates can be generated.

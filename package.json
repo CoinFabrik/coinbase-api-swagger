@@ -4,7 +4,8 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "test": "./node_modules/.bin/_mocha"
+    "test": "./node_modules/.bin/_mocha",
+    "generate-tests": "node ./scripts/generate-tests"
   },
   "author": "Fernando D. Tiberti",
   "license": "ISC",
