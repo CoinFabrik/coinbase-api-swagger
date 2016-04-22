@@ -806,7 +806,7 @@
                     }
                 ],
                 "responses": {
-                    "200": {
+                    "204": {
                         "description": "Success response (no content)"
                     }
                 }
@@ -1101,7 +1101,7 @@
                     "$ref": "#/definitions/MoneyHash"
                 },
                 "description": {
-                    "type": "string",
+                    "type": ["string", "null"],
                     "description": "User defined description"
                 },
                 "instant_exchange": {
