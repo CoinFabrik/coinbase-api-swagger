@@ -473,7 +473,7 @@
                     },
                     {
                         "in": "body",
-                        "name": "account_properties",
+                        "name": "address_properties",
                         "description": "Properties to update",
                         "required": false,
                         "schema": {
