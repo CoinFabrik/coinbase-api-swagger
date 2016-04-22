@@ -676,7 +676,7 @@
                                 "type": {
                                     "type": "string",
                                     "required": true,
-                                    "description": "Type should be \\\"send\\\" for sending money, or \\\"request\\\" for requesting money."
+                                    "description": "Type should be \"send\" for sending money, or \"request\" for requesting money."
                                 },
                                 "to": {
                                     "type": "string",
