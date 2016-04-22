@@ -216,7 +216,7 @@ describe('/accounts', function() {
       .set('Authorization', 'Bearer ' + process.env.COINBASE_ACCESS_CODE)
       .set('Accept', 'application/json')
       .send({
-        account_properties: 'DATA GOES HERE'
+        name: 'test account'
       })
       .expect(201)
       .end(function(err, res) {

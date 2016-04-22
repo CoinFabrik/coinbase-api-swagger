@@ -97,7 +97,7 @@ describe('/accounts/{account_id}/transactions', function() {
                   }
                 },
                 "description": {
-                  "type": "string",
+                  "type": ["string", "null"],
                   "description": "User defined description"
                 },
                 "instant_exchange": {
@@ -223,7 +223,7 @@ describe('/accounts/{account_id}/transactions', function() {
                 }
               },
               "description": {
-                "type": "string",
+                "type": ["string", "null"],
                 "description": "User defined description"
               },
               "instant_exchange": {
@@ -294,7 +294,10 @@ describe('/accounts/{account_id}/transactions', function() {
       .set('Authorization', 'Bearer ' + process.env.COINBASE_ACCESS_CODE)
       .set('Accept', 'application/json')
       .send({
-        transaction_options: 'DATA GOES HERE'
+        "type": "request",
+        "to": "someone@gmail.com",
+        "amount": "0.001",
+        "currency": "BTC"
       })
       .expect(201)
       .end(function(err, res) {

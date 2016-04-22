@@ -166,7 +166,7 @@ describe('/user', function() {
       .set('Authorization', 'Bearer ' + process.env.COINBASE_ACCESS_CODE)
       .set('Accept', 'application/json')
       .send({
-        body: 'DATA GOES HERE'
+        name: 'testuser'
       })
       .expect(200)
       .end(function(err, res) {

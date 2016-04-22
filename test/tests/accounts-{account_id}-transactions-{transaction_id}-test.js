@@ -54,7 +54,7 @@ describe('/accounts/{account_id}/transactions/{transaction_id}', function() {
                 }
               },
               "description": {
-                "type": "string",
+                "type": ["string", "null"],
                 "description": "User defined description"
               },
               "instant_exchange": {
@@ -127,8 +127,9 @@ describe('/accounts/{account_id}/transactions/{transaction_id}', function() {
       .expect(200)
       .end(function(err, res) {
         if (err) return done(err);
-
-        validator.validate(res.body, schema).should.be.true;
+        var isValid = validator.validate(res.body, schema);
+        JSON.stringify(validator.lastReport.errors).should.equal('[]');
+        isValid.should.be.true;
         done();
       });
     });
@@ -140,7 +141,7 @@ describe('/accounts/{account_id}/transactions/{transaction_id}', function() {
       api.del('/v2/accounts/' + require('../param-pool').get('account_id') + '/transactions/' + require('../param-pool').get('transaction_id') + '')
       .set('Authorization', 'Bearer ' + process.env.COINBASE_ACCESS_CODE)
       .set('Accept', 'application/json')
-      .expect(200)
+      .expect(204)
       .end(function(err, res) {
         if (err) return done(err);
 

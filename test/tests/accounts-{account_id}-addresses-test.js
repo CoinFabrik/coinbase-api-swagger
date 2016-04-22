@@ -162,7 +162,7 @@ describe('/accounts/{account_id}/addresses', function() {
       .set('Authorization', 'Bearer ' + process.env.COINBASE_ACCESS_CODE)
       .set('Accept', 'application/json')
       .send({
-        account_properties: 'DATA GOES HERE'
+        name: 'testAddress'
       })
       .expect(201)
       .end(function(err, res) {
