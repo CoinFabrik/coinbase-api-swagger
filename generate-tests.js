@@ -18,25 +18,22 @@ function replaceParamsPlaceholders(file) {
   return file;
 }
 
-var config = {
-  assertionFormat: 'should',
-  testModule: 'supertest',
-  pathName: [],//all paths
-  maxLen: 80
-};
-//Fernando's User ID (sandbox) : "891ae771-ce5a-5014-801b-5461b5481e80"
-
-
-deref(require('./swagger.json'), function(err, fullSchema) {
-  console.dir(fullSchema); // has the full expanded $refs
-
-  // Generates an array of JavaScript test files following specified configuration
-  var files = stt.testGen(fullSchema, config);
-  console.log(files);
-  files.forEach(file => {
-    file.test = replaceParamsPlaceholders(file.test);
-    fs.writeFileSync('./built-tests/' + file.name, file.test);
+function generate() {
+  deref(require('./swagger.json'), function(err, fullSchema) {
+    // Generates an array of JavaScript test files following specified configuration
+    var files = stt.testGen(fullSchema, {
+      assertionFormat: 'should',
+      testModule: 'supertest',
+      pathName: [],//all paths
+      maxLen: 80
+    });
+    files.forEach(file => {
+      file.test = replaceParamsPlaceholders(file.test);
+      fs.writeFileSync('./built-tests/' + file.name, file.test);
+    });
   });
-});
+}
+
 
 exports.replaceParamsPlaceholders = replaceParamsPlaceholders;
+exports.generate = generate;
