@@ -6,6 +6,7 @@ exports.get = function get(key) {
     throw new Error('Parameter "' + key + '" not found in param-pool. Set it in ./test/initialization.js' +
     ' ("before" hook) like so: require(\'./param-pool\').set(\'' + key + '\', <some value>)');
   }
+  console.log(key + ': ' + value);
   return value;
 };
 
