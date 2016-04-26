@@ -9,7 +9,7 @@
             "url": "http://www.coinfabrik.com/"
         }
     },
-    "host": "api.sandbox.coinbase.com",
+    "host": "api.coinbase.com",
     "schemes": [
         "https"
     ],
