@@ -13,6 +13,14 @@ var addressesApi = new CoinbaseApi.AddressesApi(),
   accountsApi = new CoinbaseApi.AccountsApi(),
   usersApi = new CoinbaseApi.UsersApi();
 
+function getRandomName() {
+  var letters = 'abcdefghijklnmopqrstuvwxyz',
+    name = '';
+  for  (var i = 0; i < 10; i++) {
+    name = name + letters[Math.floor(Math.random() * (letters.length - 1))];
+  }
+  return name;
+}
 
 before(function(done) {
   this.timeout(8000);
@@ -47,7 +55,7 @@ before(function(done) {
       .set('Accept', 'application/json')
       .send({
         "type": "request",
-        "to": "someone@gmail.com",
+        "to": getRandomName() + "@coinfabrik.com",
         "amount": "0.001",
         "currency": "BTC"
       })
