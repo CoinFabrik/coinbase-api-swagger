@@ -6,7 +6,7 @@ This is a [Swagger](http://swagger.io/) file for the [Coinbase API](https://deve
 
 To generate a client library, go to http://editor.swagger.io/ . Go to "File" > "Import URL" and copy this url: https://github.com/CoinFabrik/coinbase-api-swagger/raw/master/swagger.json
 
-List of supported languages/frameworks:
+Then go to "Generate Client" and choose a client for download. The following languages/frameworks are supported:
 
 - Akka Scala
 - Android
