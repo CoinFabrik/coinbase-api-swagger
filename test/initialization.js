@@ -1,4 +1,4 @@
-var CoinbaseApi = require('../javascript-client/src'),
+var CoinbaseApi = require('../test-javascript-client/src'),
   should = require('chai').should(),
   params = require('./param-pool'),
   supertest = require('supertest'),
