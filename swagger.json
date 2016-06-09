@@ -675,42 +675,34 @@
                             "properties": {
                                 "type": {
                                     "type": "string",
-                                    "required": true,
                                     "description": "Type should be \"send\" for sending money, or \"request\" for requesting money."
                                 },
                                 "to": {
                                     "type": "string",
-                                    "required": true,
                                     "description": "A bitcoin address (send only) or an email of the recipient (send or request)"
                                 },
                                 "amount": {
                                     "type": "string",
-                                    "required": true,
                                     "description": "Amount to be sent/requested."
                                 },
                                 "currency": {
                                     "type": "string",
-                                    "required": true,
                                     "description": "Currency for the amount"
                                 },
                                 "description": {
                                     "type": "string",
-                                    "required": false,
                                     "description": "Notes to be included in the email that the recipient receives"
                                 },
                                 "skip_notifications": {
                                     "type": "boolean",
-                                    "required": false,
                                     "description": "(Send only) Don’t send notification emails for small amounts (e.g. tips)"
                                 },
                                 "fee": {
                                     "type": "string",
-                                    "required": false,
                                     "description": "(Send only) Transaction fee in BTC if you would like to pay it. Coinbase pays transaction fees on payments greater than or equal to 0.0001 BTC. But for smaller amounts you may want to add your own amount. Fees can be added as a string, such as 0.0005"
                                 },
                                 "idem": {
                                     "type": "string",
-                                    "required": false,
                                     "description": "(Send only) A token to ensure idempotence. If a previous transaction with the same idem parameter already exists for this sender, that previous transaction will be returned and a new one will not be created. Max length 100 characters"
                                 }
                             }
